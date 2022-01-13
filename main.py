@@ -142,6 +142,7 @@ def Shoot():
     Torso = True
   else:
     Head = True
+    ThugHP = 0
 def barrage_CD():
   global ThugHP
   global Rage
