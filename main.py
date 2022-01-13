@@ -19,9 +19,13 @@ def RageCheck():
   global CDHit2
   global CDHit3
   global CDDMG
-  if Rage > 2:
+  if Rage < 2:
+    CDHit1 /= Rage
+    CDHit2 /= Rage
+    CDHit3 /= Rage
+    CDDMG /= Rage
+  elif Rage > 2 or Rage == 2:
     Rage = 2
-  if Rage == 2:
     CDHit1 /= Rage
     CDHit2 /= Rage
     CDHit3 /= Rage
@@ -175,8 +179,8 @@ def bearing_shot():
   global CDDMG
   print("The bullet fires!")
   time.sleep(0.25)
-  BulletOdds = random.randint(1,4)
-  if BulletOdds != 4:
+  BulletOdds = random.randint(1,3)
+  if BulletOdds != 3:
     CDDMG = round(random.uniform(7.5, 11.25), 2)
     Rage += 0.07
     RageCheck()
