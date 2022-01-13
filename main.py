@@ -5,7 +5,7 @@ import inquirer
 CDHit1 = True
 CDHit2 = True
 CDHit3 = True
-CDDMG = None
+CDDMG = 1
 Pain = True
 PainCD = 0
 HP = 100
@@ -21,17 +21,15 @@ def RageCheck():
   global CDDMG
   if Rage > 2:
     Rage = 2
-    if Rage == 2:
-      CDHit1 /= Rage
-      CDHit2 /= Rage
-      CDHit3 /= Rage
-      CDDMG /= Rage
-    RageTime = time.time() + 10
-    while time.time() < RageTime:
-      CDHit1 *= 2
-      CDHit2 *= 2
-      CDHit3 *= 2
-      CDDMG *= 2
+  if Rage == 2:
+    CDHit1 /= Rage
+    CDHit2 /= Rage
+    CDHit3 /= Rage
+    CDDMG /= Rage
+    CDHit1 *= 2
+    CDHit2 *= 2
+    CDHit3 *= 2
+    CDDMG *= 2
 def PainCheck():
   global PainCD
   if PainCD == 0:
@@ -119,7 +117,7 @@ def barrage_CD():
   global Rage
   global PainCD
   for a in range (20):
-    BarrageDMG = round(random.uniform(0.525, 0.1), 3)
+    BarrageDMG = round(random.uniform(0.525, 1), 3)
     ThugHP -= BarrageDMG
     print("-" + str(round(BarrageDMG, 3)))
     Rage += 0.01
