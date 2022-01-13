@@ -112,12 +112,12 @@ def punch_combo_GE():
   ThugHP -= GEHit3
   print("-" + str(round(GEHit3, 1)))
   time.sleep(0.5)
-  if PainCD > 0:
-   PainCD -= 1
+  if PainGE > 0:
+   PainGE -= 1
   if ThugHP <= 0:
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
-    PainCD = 0
+    PainGE = 0
     time.sleep(1)
   else:
     print("He has", round(ThugHP, 2), "HP left")
