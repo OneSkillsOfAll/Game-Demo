@@ -2,6 +2,12 @@ import sys
 import time
 import random
 import inquirer
+LeftArm = False
+RightArm = False
+LeftLeg = False
+RightLeg = False
+Torso = False
+Head = False
 CDHit1 = True
 CDHit2 = True
 CDHit3 = True
@@ -86,8 +92,8 @@ def punch_combo_GE():
   global GEHit1
   global GEHit2
   global GEHit3
-  global PainCD
-  if PainCD < 10:
+  global PainGE
+  if PainGE < 10:
     Pain = 1
   else:
     Pain = 1.5
@@ -116,6 +122,26 @@ def punch_combo_GE():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+def Shoot():
+  global ThugHP
+  global ShotChance
+  global Shot1DMG
+  global Shot2DMG
+  ShotChance = random.randint(1,10)
+  Shot1DMG = round(random.uniform(3, 3.75), 2)
+  Shot2DMG = round(random.uniform(3, 3.75), 2)
+  if ShotChance == (1, 2):
+    LeftLeg = True
+  elif ShotChance == (3, 4):
+    RightLeg = True
+  elif ShotChance == (5, 6):
+    LeftArm = True
+  elif ShotChance == (7, 8):
+    RightArm = True
+  elif ShotChance == 9:
+    Torso = True
+  else:
+    Head = True
 def barrage_CD():
   global ThugHP
   global Rage
@@ -192,7 +218,7 @@ def bearing_shot():
   time.sleep(0.5)
   print("The bullet comes back!")
   time.sleep(0.5)
-  CDDMG = round(random.uniform(3.75,9), 2)
+  CDDMG = round(random.uniform(3.75, 9), 2)
   CDDMG *= Rage
   ThugHP -= round(CDDMG, 2)
   print("-" + str(round(CDDMG, 2)))
@@ -299,7 +325,7 @@ def Thugshot():
       sys.exit()
   if shot == 'Hit':
     for a in range(2):
-      ThugDMG = round(random.uniform(7.5,11.25))
+      ThugDMG = round(random.uniform(7.5, 11.25))
       HP -= ThugDMG
       print("-" + str(round(ThugDMG, 2)))
       Rage += 0.07
