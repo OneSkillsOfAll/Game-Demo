@@ -2,29 +2,52 @@ import sys
 import time
 import random
 import inquirer
-Hit1 = None
-Hit2 = None
-Hit3 = None
-DMG = None
+LeftArm = False
+RightArm = False
+LeftLeg = False
+RightLeg = False
+Torso = False
+Head = False
+CDHit1 = True
+CDHit2 = True
+CDHit3 = True
+CDBarrageDMG = True
+CDDMG = 1
 Pain = True
+RageCD = 10
+PainCD = 1
 HP = 100
 ThugHP = 100
 Melt = 0
 Rage = 1
 PainSens = 1
-if Rage > 2:
-  Rage = 2
-  RageTime = time.time() + 10
-  while time.time() < RageTime:
-    CDHit1 /= Rage
-    CDHit2 /= Rage
-    CDHit3 /= Rage
-    CDDMG /= Rage
-  while time.time() < RageTime:
-    CDHit1 *= 2
-    CDHit2 *= 2
-    CDHit3 *= 2
-    CDDMG *= 2
+def RageCheck():
+  if RageCD > 1:
+    RageCD -= 1
+def RageUse():
+  global Rage
+  global RageCD
+  global CDHit1
+  global CDHit2
+  global CDHit3
+  global CDDMG
+  global CDBarrageDMG
+  if Rage < 2 and RageCD > 1:
+    CDHit1 *= 1
+    CDHit2 *= 1
+    CDHit3 *= 1
+    CDDMG *= 1
+    CDBarrageDMG *= 1
+  elif Rage >= 2 and RageCD == 1:
+    Rage = 2
+def PainCheck():
+  global PainCD
+  if PainCD == 0:
+    return True
+    PainCD = 0
+  if PainCD > 0:
+    return False
+    PainCD -= 1
 def ask(message, choices):
   global HP
   return inquirer.prompt([inquirer.List('',message,choices)])[""]
@@ -32,77 +55,162 @@ def punch_combo_CD():
   global HP
   global ThugHP
   global Rage
+  global RageCD
   global CDHit1
   global CDHit2
   global CDHit3
-  CDHit1 = round(random.uniform(1,1), 1)
-  CDHit2 = round(random.uniform(1,1), 1)
-  CDHit3 = round(random.uniform(1,1), 1)
-  CDHit1 *= Rage
+  CDHit1 = round(random.uniform(5, 7), 1)
+  CDHit2 = round(random.uniform(5, 7), 1)
+  CDHit3 = round(random.uniform(5, 7), 1)
+  RageUse()
+  if Rage < 2 and RageCD > 1:
+    CDHit1 *= 1
+  elif Rage >= 2 and RageCD == 1:
+    CDHit1 *= 2
+    RageCD == 10
   ThugHP -= CDHit1
-  print("-" + str(round(CDHit1, 1)))
   Rage += .05
+  RageUse()
+  print("-" + str(round(CDHit1, 2)))
+  print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.5)
-  CDHit2 *= Rage
+  if Rage < 2 and RageCD < 10:
+    CDHit2 *= 1
+    print("You need to do", str(RageCD) + " more moves")
+  elif Rage >= 2 and RageCD == 10:
+    if RageCD == 10:
+      CDHit2 *= 2
+      RageCD -= 1
   ThugHP -= CDHit2
-  print("-" + str(round(CDHit2, 1)))
   Rage += .05
+  RageUse()
+  print("-" + str(round(CDHit2, 2)))
+  print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.5)
-  CDHit3 *= Rage
+  if Rage < 2 and RageCD < 10:
+    CDHit3 *= 1
+  elif Rage >= 2 and RageCD == 10:
+    if RageCD == 10:
+      CDHit3 *= 2
+      RageCD -= 1
   ThugHP -= CDHit3
-  print("-" + str(round(CDHit3, 1)))
   Rage += .05
+  RageUse()
+  print("-" + str(round(CDHit3, 2)))
+  print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.25)
   if ThugHP <= 0:
     Rage = 1
     print("He has 0 HP left")
-    print("You had", round(HP, 1), "HP left")
+    print("You had", round(HP), "HP left")
     time.sleep(1)
   else:
-    print("He has", round(ThugHP, 1), "HP left")
+    print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+  RageCD -= 1
+  if RageCD == 0:
+    RageCD = 10
+  print("You need to do", str(RageCD) + " more moves")
 def punch_combo_GE():
   global HP
   global ThugHP
   global GEHit1
   global GEHit2
   global GEHit3
-  GEHit1 = round(random.uniform(1,1), 2)
-  GEHit2 = round(random.uniform(1,1), 2)
-  GEHit3 = round(random.uniform(1,1), 2)
+  global PainCD
+  if PainCD < 10:
+    Pain = 1
+  else:
+    Pain = 1.5
+  GEHit1 = round(random.uniform(4, 7), 1)
+  GEHit2 = round(random.uniform(4, 7), 1)
+  GEHit3 = round(random.uniform(4, 7), 1)
   GEHit1 *= Pain
   ThugHP -= GEHit1
-  print("-" + str(round(GEHit1, 2)))
+  print("-" + str(round(GEHit1, 1)))
   time.sleep(0.5)
   GEHit2 *= Pain
   ThugHP -= GEHit2
-  print("-" + str(round(GEHit2, 2)))
+  print("-" + str(round(GEHit2, 1)))
   time.sleep(0.5)
   GEHit3 *= Pain
   ThugHP -= GEHit3
-  print("-" + str(round(GEHit3, 2)))
+  print("-" + str(round(GEHit3, 1)))
   time.sleep(0.5)
+  if PainCD > 0:
+   PainCD -= 1
   if ThugHP <= 0:
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
+    PainCD = 0
     time.sleep(1)
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+def Shoot():
+  global ThugHP
+  global ShotChance1
+  global Shot1DMG
+  global Shot2DMG
+  ShotChance1 = random.randint(1,10)
+  Shot1DMG = round(random.uniform(3, 3.8), 1)
+  Shot2DMG = round(random.uniform(3, 3.8), 1)
+  if ShotChance1 == (1, 2):
+    LeftLeg = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (3, 4):
+    RightLeg = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (5, 6):
+    LeftArm = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (7, 8):
+    RightArm = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == 9:
+    Torso = True
+    Shot1DMG *= 1.5
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  else:
+    Head = True
+    ThugHP = 0
+    print("He has 0 HP left")
+    print("You had", round(HP, 1), "HP left")
+    time.sleep(1)
 def barrage_CD():
   global ThugHP
   global Rage
+  global RageCD
+  global PainCD
   for a in range (20):
-    CDBarrageDMG = round(random.uniform(0.01,0.01), 2)
-    CDBarrageDMG *= Rage
+    CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
+    RageUse()
+    if Rage < 2:
+      CDBarrageDMG *= 1
+    else:
+      CDBarrageDMG *= 2
+      RageCD -= 1
     ThugHP -= CDBarrageDMG
-    print("-" + str(round(CDBarrageDMG, 2)))
-    Rage += 0.01
+    print("-" + str(round(CDBarrageDMG, 3)))
+    Rage += 0.005
+    RageUse()
     time.sleep(0.1)
   time.sleep(0.5)
-  ThugHP -= 1
-  print("-1")
-  Rage += 0.03
+  if Rage < 2:
+    ThugHP -= 3.75
+    Rage += 0.02
+    print("-3.75")
+  else:
+    ThugHP -= 7.5
+    Rage += 0.04
+    print("-7.5")
+  RageUse()
+  print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.5)
   if ThugHP <= 0:
     Rage = 1
@@ -112,25 +220,37 @@ def barrage_CD():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+  RageCD -= 1
+  if RageCD == 0:
+    RageCD = 10
+  Print("You need to do", str(RageCD) + " more moves")
 def barrage_GE():
   global ThugHP
+  global PainCD
+  if PainCD < 10:
+    Pain = 1
+  else:
+    Pain = 1.5
   for a in range (18):
-    GEBarrageDMG = round(random.uniform(0.01, 0.01), 2)
+    GEBarrageDMG = round(random.uniform(0.5, 1), 1)
     GEBarrageDMG *= Pain
     ThugHP -= GEBarrageDMG
-    print("-" + str(round(GEBarrageDMG, 2)))
+    print("-" + str(round(GEBarrageDMG, 3)))
     time.sleep(0.1)
   time.sleep(0.5)
   if Pain == 1:
-    ThugHP -= 1
-    print("-1")
+    ThugHP -= 3.75
+    print("-3.75")
   elif Pain == 1.5:
-    ThugHP -= 1.5
-    print("-1.5")
+    ThugHP -= 5.5
+    print("-5.5")
   time.sleep(0.5)
+  if PainCD > 0:
+    PainCD -= 1
   if ThugHP <= 0:
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
+    PainCD = 1
     time.sleep(1)
   else:
     print("He has", round(ThugHP, 2), "HP left")
@@ -138,27 +258,43 @@ def barrage_GE():
 def bearing_shot():
   global ThugHP
   global Rage
+  global RageCD
   global BulletOdds
   global CDDMG
   print("The bullet fires!")
   time.sleep(0.25)
-  BulletOdds = random.randint(1,4)
-  if BulletOdds != 4:
-    CDDMG = round(random.randint(1, 1), 1)
-    Rage += 0.07
-    CDDMG *= Rage
-    ThugHP -= round(CDDMG, 1)
-    print("-" + str(round(CDDMG, 1)))
+  BulletOdds = random.randint(1,3)
+  if BulletOdds != 3:
+    CDDMG = round(random.uniform(7, 10), 2)
+    Rage += 0.075
+    RageUse()
+    if Rage < 2:
+      CDDMG *= 1
+    else:
+      if RageCD == 10:
+        CDDMG *= 2
+        RageCD -= 1
+    ThugHP -= round(CDDMG, 2)
+    print("-" + str(round(CDDMG, 2)))
+    print("Your rage is", str(round(Rage, 2)))
   else:
     print("The bullet missed!")
   time.sleep(0.5)
   print("The bullet comes back!")
   time.sleep(0.5)
-  CDDMG = round(random.randint(1,1), 1)
-  CDDMG *= Rage
-  ThugHP -= round(CDDMG, 1)
-  print("-" + str(round(CDDMG, 1)))
-  Rage += 0.08
+  CDDMG = round(random.uniform(3.75, 9), 2)
+  RageUse()
+  if Rage < 2:
+    CDDMG *= 1
+  else:
+    if RageCD == 10:
+      CDDMG *= 2
+      RageCD -= 1
+  ThugHP -= round(CDDMG, 2)
+  Rage += 0.1
+  print("-" + str(round(CDDMG, 2)))
+  print("Your rage is", str(round(Rage, 2)))
+  RageUse()
   time.sleep(0.5)
   if ThugHP <= 0:
     Rage = 1
@@ -166,25 +302,37 @@ def bearing_shot():
     print("You had", round(HP, 1), "HP left")
     time.sleep(1)
   else:
-    print("He has", round(ThugHP, 1), "HP left")
+    print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+  RageCD -= 1
+  if RageCD == 0:
+    RageCD = 10
+  Print("You need to do", str(RageCD) + " more moves")
 def Sand_Ant_Spray():
   global ThugHP
   global DMG
+  global PainCD
+  if PainCD < 10:
+    Pain = 1
+  else:
+    Pain = 1.5
   print("You throw the sand")
   time.sleep(0.5)
   print("It turns into ants")
   time.sleep(0.5)
   print("The ants bite")
   time.sleep(0.5)
-  GEDMG = round(random.uniform(1,1), 1)
+  GEDMG = round(random.uniform(10,20), 1)
   GEDMG *= Pain
   ThugHP -= GEDMG
   print("-" + str(round(GEDMG, 2)))
   time.sleep(0.5)
+  if PainCD > 0:
+    PainCD -= 1
   if ThugHP <= 0:
     print("He has HP 0 left")
     print("You had", round(HP, 1), "HP left")
+    PainCD = 1
     time.sleep(1)
   else:
     print("He has", round(ThugHP, 2), "HP left")
@@ -195,33 +343,38 @@ def Heal():
   print("Dude, do you are have the stupid?\nYou just healed the thug back to 100 HP.")
   time.sleep(2.5)
   if ThugHP > 0:
-    print("He has", round(ThugHP, 1), "HP left")
+    print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
   else:
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
 def Pain_Sens():
-  global ThugHP
-  global GEDMG
-  global PainTime
-  global Pain
-  ThugHP -= 1
-  print("You punch the enemy")
-  time.sleep(0.5)
-  print("-1")
-  time.sleep(0.5)
-  PainTime = time.time() + 4.5
-  while time.time() < PainTime:
+  if PainCheck() == True:
+    global ThugHP
+    global GEDMG
+    global PainTime
+    global Pain
+    global PainCD
+    print("You punch the enemy")
+    time.sleep(0.5)
+    ThugHP -= 4.5
+    print("-4.5")
+    time.sleep(0.5)
     Pain = 1.5
     print("Damage has been increased")
-  time.sleep(0.5)
-  if ThugHP <= 0:
-    print("He has HP 0 left")
-    print("You had", round(HP, 1), "HP left")
-    time.sleep(1)
+    time.sleep(0.5)
+    if PainCD == 0:
+     PainCD = 10
+    if ThugHP <= 0:
+      print("He has HP 0 left")
+      print("You had", round(HP, 1), "HP left")
+      PainCD = 0 
+      time.sleep(1)
+    else:
+      print("He has", round(ThugHP, 2), "HP left")
+      time.sleep(1)
   else:
-    print("He has", round(ThugHP, 2), "HP left")
-    time.sleep(1)
+    print("You have", str(PainCD) + " moves left")
 thugshot = ['HeadBonk', 'Hit']
 def Thugshot():
   global ThugHP
@@ -231,12 +384,15 @@ def Thugshot():
   print("The thug goes for the kill")
   time.sleep(0.5)
   if shot == 'HeadBonk':
-    HP -= 1
+    HP -= 20
     print("The bat hits your head")
     time.sleep(0.5)
-    print("-1")
+    print("-20")
     time.sleep(0.5)
-    Rage += 0.2
+    Rage += 0.15
+    RageUse()
+    if ability == 'CD':
+      print("Your rage is", str(round(Rage, 2)))
     if HP > 0:
       print("You have", round(HP, 1), "HP left")
       time.sleep(0.5)
@@ -246,10 +402,13 @@ def Thugshot():
       sys.exit()
   if shot == 'Hit':
     for a in range(2):
-      ThugDMG = round(random.uniform(1,1))
+      ThugDMG = round(random.uniform(7.5, 12))
       HP -= ThugDMG
-      print("-" + str(round(ThugDMG, 2)))
       Rage += 0.07
+      RageUse()
+      print("-" + str(round(ThugDMG, 2)))
+      if ability == 'CD':
+        print("Your rage is", str(round(Rage, 2)))
       time.sleep(0.5)
     if HP > 0:
       print("You have", round(HP, 1), "HP left")
@@ -258,8 +417,8 @@ def Thugshot():
       print("Y O U  D I E D")
       time.sleep(1)
       sys.exit()
-power = ['CD', 'GE'] 
-#'CUSTOMHEAL', 'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
+power = ['CD', 'GE', ] 
+#'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
 print("Not Finished, I just want to make a good game")
 name = input('My name is ')
 print("I,", name + """, have a dream. My dream is to kill bossu. Someone that sells drugs to anyone who pays. Don't do drugs kids. \nOr else you might join the Italian Mafia.""")
@@ -270,8 +429,8 @@ if ability == 'CD':
   print("\nLiterally God himself: You now have the ability to heal or fix anything else but yourself, including objects.")
 elif ability == 'GE':
   print("\nLiterally God himself: You can now grow organic materials out of inorganic materials and heal yourself.")
-#elif ability == "CUSTOMHEAL":
-#  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, #the limb that is hit loses function and loses blood \nto that limb and can ricochet #until it hits its target. \nYou can also now heal yourself, but after a cooldown for a #healing syrum dart.")
+elif ability == 'CUSTOMHEAL':
+  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, the limb that is hit loses function and loses blood \nto that limb and can ricochet until it hits its target. \nYou can also now heal yourself, but after a cooldown for a healing syrum dart.")
 #elif ability == 'SPTW':
 #  print("\nLiterally God himself: You can now stop time for five relative seconds and use it to your advantage with extreme core power.")
 #elif ability == 'CUSTOMPOWER':
@@ -290,14 +449,24 @@ elif ability == 'GE':
 #  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.")
 #elif ability == 'GERKC':
 #  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.")
-print("\nSo apparently some guy wants to beat you down")
+print("\nSo apparently some guy wants to beat you down, because you've been crippled by the arrow. Don't question.")
 if ability == 'CD':
   def CD():
     global HP
   while ThugHP > 0:
     moves = ask('What do you want to do?', ['Punch Combo', 'Barrage', 'Double Bearing Shot', 'Heal?'])
-    if moves == 'Barrage':
+    if moves == 'Punch Combo':
+      punch_combo_CD()
+      RageUse()
+      if ThugHP > 0:
+        Thugshot()
+      if HP <= 0:
+        print("Y O U  D I E D")
+        time.sleep(1)
+        sys.exit()
+    elif moves == 'Barrage':
       barrage_CD()
+      RageUse()
       if ThugHP > 0:
         Thugshot()
       if HP <= 0:
@@ -306,14 +475,7 @@ if ability == 'CD':
         sys.exit()
     elif moves == 'Double Bearing Shot':
       bearing_shot()
-      if ThugHP > 0:
-        Thugshot()
-      if HP <= 0:
-        print("Y O U  D I E D")
-        time.sleep(1)
-        sys.exit()
-    elif moves == 'Punch Combo':
-      punch_combo_CD()
+      RageUse()
       if ThugHP > 0:
         Thugshot()
       if HP <= 0:
@@ -360,10 +522,21 @@ elif ability == 'GE':
         time.sleep(1)
         sys.exit()
     elif moves == 'Pain Sensitivity':
-      Pain_Sens()
-      if ThugHP > 0:
-        Thugshot()
-      elif HP <= 0:
+      if PainCD == 0:
+        Pain_Sens()
+        PainCD = 10
+        if ThugHP > 0:
+          Thugshot()
+      else:
+        PainCheck()
+        print("You have", str(PainCD) + " moves left")
+        time.sleep(1)
+        GE()
+      if HP <= 0:
         print("Y O U  D I E D")
         time.sleep(1)
         sys.exit()
+elif ability == 'CUSTOMHEAL':
+  def CUSTOMHEAL():
+    global HP
+  print("WIP (and nae nae)")
