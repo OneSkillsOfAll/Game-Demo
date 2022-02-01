@@ -12,9 +12,9 @@ CDHit1 = True
 CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
-CDDMG = 1
+CDDMG = True
 Pain = True
-RageCD = 10
+RageCD = 1
 PainCD = 1
 HP = 100
 ThugHP = 100
@@ -24,7 +24,7 @@ PainSens = 1
 
 def RageCDCheck():
   global RageCD
-  if RageCD > 1:
+  if RageCD > 1 and Rage >= 2:
     RageCD -= 1
   else:
     RageCD = 10
@@ -43,6 +43,8 @@ def RageUse():
     CDHit3 *= 1
     CDDMG *= 1
     CDBarrageDMG *= 1
+  elif Rage >= 2 and RageCD > 1:
+    Rage = 2
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
   elif Rage >= 2 and RageCD == 1:
@@ -111,7 +113,6 @@ def punch_combo_CD():
   elif Rage >= 2 and RageCD == 10:
     if RageCD == 10:
       CDHit3 *= 2
-      RageCD -= 1
   ThugHP -= CDHit3
   Rage += .05
   RageUse()
@@ -133,9 +134,6 @@ def punch_combo_CD():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
-  RageCD -= 1
-  if RageCD == 0:
-    RageCD = 10
   print("You need to do", str(RageCD) + " more moves")
   RageCDCheck()
 
