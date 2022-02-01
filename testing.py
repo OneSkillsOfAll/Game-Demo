@@ -21,9 +21,11 @@ ThugHP = 100
 Melt = 0
 Rage = 1
 PainSens = 1
-def RageCheck():
+def RageCDCheck():
   if RageCD > 1:
     RageCD -= 1
+  else:
+    RageCD = 10
 def RageUse():
   global Rage
   global RageCD
@@ -38,8 +40,10 @@ def RageUse():
     CDHit3 *= 1
     CDDMG *= 1
     CDBarrageDMG *= 1
-  elif Rage >= 2 and RageCD == 1:
+  elif Rage >= 2 and RageCD == 2:
     Rage = 2
+  elif Rage >= 2 and RageCD == 1:
+    Rage = 1
 def PainCheck():
   global PainCD
   if PainCD == 0:
@@ -65,6 +69,8 @@ def punch_combo_CD():
   RageUse()
   if Rage < 2 and RageCD > 1:
     CDHit1 *= 1
+  elif Rage >= 2 and RageCD == 2:
+    Rage = 2
   elif Rage >= 2 and RageCD == 1:
     CDHit1 *= 2
     RageCD == 10
@@ -84,6 +90,13 @@ def punch_combo_CD():
   ThugHP -= CDHit2
   Rage += .05
   RageUse()
+  if Rage < 2 and RageCD > 1:
+    CDHit1 *= 1
+  elif Rage >= 2 and RageCD == 2:
+    Rage = 2
+  elif Rage >= 2 and RageCD == 1:
+    CDHit1 *= 2
+    RageCD == 10
   print("-" + str(round(CDHit2, 2)))
   print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.5)
@@ -96,6 +109,13 @@ def punch_combo_CD():
   ThugHP -= CDHit3
   Rage += .05
   RageUse()
+  if Rage < 2 and RageCD > 1:
+    CDHit1 *= 1
+  elif Rage >= 2 and RageCD == 2:
+    Rage = 2
+  elif Rage >= 2 and RageCD == 1:
+    CDHit1 *= 2
+    RageCD == 10
   print("-" + str(round(CDHit3, 2)))
   print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.25)
@@ -111,6 +131,7 @@ def punch_combo_CD():
   if RageCD == 0:
     RageCD = 10
   print("You need to do", str(RageCD) + " more moves")
+  RageCDCheck()
 def punch_combo_GE():
   global HP
   global ThugHP
@@ -199,6 +220,13 @@ def barrage_CD():
     print("-" + str(round(CDBarrageDMG, 3)))
     Rage += 0.005
     RageUse()
+    if Rage < 2 and RageCD > 1:
+      CDHit1 *= 1
+    elif Rage >= 2 and RageCD == 2:
+      Rage = 2
+    elif Rage >= 2 and RageCD == 1:
+      CDHit1 *= 2
+      RageCD == 10
     time.sleep(0.1)
   time.sleep(0.5)
   if Rage < 2:
@@ -223,7 +251,8 @@ def barrage_CD():
   RageCD -= 1
   if RageCD == 0:
     RageCD = 10
-  Print("You need to do", str(RageCD) + " more moves")
+  print("You need to do", str(RageCD) + " more moves")
+  RageCDCheck()
 def barrage_GE():
   global ThugHP
   global PainCD
@@ -268,12 +297,13 @@ def bearing_shot():
     CDDMG = round(random.uniform(7, 10), 2)
     Rage += 0.075
     RageUse()
-    if Rage < 2:
-      CDDMG *= 1
-    else:
-      if RageCD == 10:
-        CDDMG *= 2
-        RageCD -= 1
+    if Rage < 2 and RageCD > 1:
+      CDHit1 *= 1
+    elif Rage >= 2 and RageCD == 2:
+      Rage = 2
+    elif Rage >= 2 and RageCD == 1:
+      CDHit1 *= 2
+      RageCD == 10
     ThugHP -= round(CDDMG, 2)
     print("-" + str(round(CDDMG, 2)))
     print("Your rage is", str(round(Rage, 2)))
@@ -307,7 +337,8 @@ def bearing_shot():
   RageCD -= 1
   if RageCD == 0:
     RageCD = 10
-  Print("You need to do", str(RageCD) + " more moves")
+  print("You need to do", str(RageCD) + " more moves")
+  RageCDCheck()
 def Sand_Ant_Spray():
   global ThugHP
   global DMG
