@@ -22,6 +22,7 @@ Melt = 0
 Rage = 1
 PainSens = 1
 def RageCDCheck():
+  global RageCD
   if RageCD > 1:
     RageCD -= 1
   else:
@@ -208,6 +209,7 @@ def barrage_CD():
   global Rage
   global RageCD
   global PainCD
+  global CDBarrageDMG
   for a in range (20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     RageUse()
@@ -221,11 +223,11 @@ def barrage_CD():
     Rage += 0.005
     RageUse()
     if Rage < 2 and RageCD > 1:
-      CDHit1 *= 1
+      CDBarrageDMG *= 1
     elif Rage >= 2 and RageCD == 2:
       Rage = 2
     elif Rage >= 2 and RageCD == 1:
-      CDHit1 *= 2
+      CDBarrageDMG *= 2
       RageCD == 10
     time.sleep(0.1)
   time.sleep(0.5)
@@ -298,11 +300,11 @@ def bearing_shot():
     Rage += 0.075
     RageUse()
     if Rage < 2 and RageCD > 1:
-      CDHit1 *= 1
+      CDDMG *= 1
     elif Rage >= 2 and RageCD == 2:
       Rage = 2
     elif Rage >= 2 and RageCD == 1:
-      CDHit1 *= 2
+      CDDMG *= 2
       RageCD == 10
     ThugHP -= round(CDDMG, 2)
     print("-" + str(round(CDDMG, 2)))
