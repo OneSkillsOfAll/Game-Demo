@@ -21,12 +21,14 @@ ThugHP = 100
 Melt = 0
 Rage = 1
 PainSens = 1
+
 def RageCDCheck():
   global RageCD
   if RageCD > 1:
     RageCD -= 1
   else:
     RageCD = 10
+
 def RageUse():
   global Rage
   global RageCD
@@ -45,6 +47,7 @@ def RageUse():
     Rage = 2
   elif Rage >= 2 and RageCD == 1:
     Rage = 1
+
 def PainCheck():
   global PainCD
   if PainCD == 0:
@@ -53,9 +56,11 @@ def PainCheck():
   if PainCD > 0:
     return False
     PainCD -= 1
+
 def ask(message, choices):
   global HP
   return inquirer.prompt([inquirer.List('',message,choices)])[""]
+
 def punch_combo_CD():
   global HP
   global ThugHP
@@ -133,6 +138,7 @@ def punch_combo_CD():
     RageCD = 10
   print("You need to do", str(RageCD) + " more moves")
   RageCDCheck()
+
 def punch_combo_GE():
   global HP
   global ThugHP
@@ -169,6 +175,7 @@ def punch_combo_GE():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+
 def Shoot():
   global ThugHP
   global ShotChance1
@@ -204,6 +211,7 @@ def Shoot():
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
     time.sleep(1)
+
 def barrage_CD():
   global ThugHP
   global Rage
@@ -255,6 +263,7 @@ def barrage_CD():
     RageCD = 10
   print("You need to do", str(RageCD) + " more moves")
   RageCDCheck()
+
 def barrage_GE():
   global ThugHP
   global PainCD
@@ -286,6 +295,7 @@ def barrage_GE():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+
 def bearing_shot():
   global ThugHP
   global Rage
@@ -341,6 +351,7 @@ def bearing_shot():
     RageCD = 10
   print("You need to do", str(RageCD) + " more moves")
   RageCDCheck()
+
 def Sand_Ant_Spray():
   global ThugHP
   global DMG
@@ -370,6 +381,7 @@ def Sand_Ant_Spray():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
+
 def Heal():
   global ThugHP
   ThugHP = 100
@@ -381,6 +393,7 @@ def Heal():
   else:
     print("He has 0 HP left")
     print("You had", round(HP, 1), "HP left")
+
 def Pain_Sens():
   if PainCheck() == True:
     global ThugHP
@@ -408,7 +421,9 @@ def Pain_Sens():
       time.sleep(1)
   else:
     print("You have", str(PainCD) + " moves left")
+  
 thugshot = ['HeadBonk', 'Hit']
+
 def Thugshot():
   global ThugHP
   global HP
@@ -450,7 +465,9 @@ def Thugshot():
       print("Y O U  D I E D")
       time.sleep(1)
       sys.exit()
+
 power = ['CD', 'GE', ] 
+
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
 print("Not Finished, I just want to make a good game")
 name = input('My name is ')
