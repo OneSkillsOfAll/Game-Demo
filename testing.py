@@ -37,6 +37,11 @@ def RageCDCheck():
     if CDHit3 > 14:
       CDHit3 /= 2
 
+def RageCDRemoval():
+  global RageCD
+  if RageCD > 1 and Rage >= 2:
+    RageCD -= 1
+
 def RageUse():
   global Rage
   global RageCD
