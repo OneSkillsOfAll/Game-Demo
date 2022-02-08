@@ -24,10 +24,18 @@ PainSens = 1
 
 def RageCDCheck():
   global RageCD
+  global CDHit1
+  global CDHit2
+  global CDHit3
   if RageCD > 1 and Rage >= 2:
     RageCD -= 1
-  else:
-    RageCD = 10
+  elif RageCD > 2 and Rage >= 2:
+    if CDHit1 > 14:
+      CDHit1 /= 2
+    if CDHit2 > 14:
+      CDHit2 /= 2
+    if CDHit3 > 14:
+      CDHit3 /= 2
 
 def RageUse():
   global Rage
