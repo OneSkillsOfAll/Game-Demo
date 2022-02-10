@@ -2,6 +2,7 @@ import sys
 import time
 import random
 import inquirer
+from blessed import Terminal
 LeftArm = False
 RightArm = False
 LeftLeg = False
