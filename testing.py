@@ -235,7 +235,7 @@ def barrage_CD():
   global RageCD
   global PainCD
   global CDBarrageDMG
-  for a in range ():
+  for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     RageUse()
     if Rage < 2:
