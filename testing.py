@@ -87,9 +87,9 @@ def punch_combo_CD():
   global CDHit1
   global CDHit2
   global CDHit3
-  CDHit1 = round(random.uniform(5, 7), 1)
-  CDHit2 = round(random.uniform(5, 7), 1)
-  CDHit3 = round(random.uniform(5, 7), 1)
+  CDHit1 = round(random.uniform(5, 8.5), 1)
+  CDHit2 = round(random.uniform(5, 8.5), 1)
+  CDHit3 = round(random.uniform(5, 8.5), 1)
   RageUse()
   if Rage < 2 and RageCD > 1:
     CDHit1 *= 1
@@ -235,7 +235,7 @@ def barrage_CD():
   global RageCD
   global PainCD
   global CDBarrageDMG
-  for a in range (20):
+  for a in range ():
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     RageUse()
     if Rage < 2:
@@ -245,7 +245,7 @@ def barrage_CD():
       RageCD -= 1
     ThugHP -= CDBarrageDMG
     print("-" + str(round(CDBarrageDMG, 3)))
-    Rage += 0.005
+    Rage += 0.015
     RageUse()
     if Rage < 2 and RageCD > 1:
       CDBarrageDMG *= 1
@@ -325,7 +325,7 @@ def bearing_shot():
   time.sleep(0.25)
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
-    CDDMG = round(random.uniform(7, 10), 2)
+    CDDMG = round(random.uniform(7, 14), 2)
     Rage += 0.075
     RageUse()
     if Rage < 2 and RageCD > 1:
@@ -344,7 +344,7 @@ def bearing_shot():
   time.sleep(0.5)
   print("The bullet comes back!")
   time.sleep(0.5)
-  CDDMG = round(random.uniform(3.75, 9), 2)
+  CDDMG = round(random.uniform(3.75, 14), 2)
   RageUse()
   if Rage < 2:
     CDDMG *= 1
