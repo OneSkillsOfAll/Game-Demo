@@ -42,6 +42,8 @@ def RageCDRemoval():
   global RageCD
   if RageCD > 1 and Rage >= 2:
     RageCD -= 1
+  elif RageCD == 1 and Rage < 2:
+    RageCD -= 0
 
 def RageUse():
   global Rage
