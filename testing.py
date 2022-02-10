@@ -15,7 +15,7 @@ CDHit3 = True
 CDBarrageDMG = True
 CDDMG = True
 Pain = True
-RageCD = 1
+RageCD = 2
 PainCD = 1
 HP = 100
 ThugHP = 100
@@ -31,19 +31,21 @@ def RageCDCheck():
   if RageCD > 1 and Rage >= 2:
     RageCD -= 1
   elif RageCD > 2 and Rage >= 2:
-    if CDHit1 > 14:
+    if CDHit1 > 17:
       CDHit1 /= 2
-    if CDHit2 > 14:
+    if CDHit2 > 17:
       CDHit2 /= 2
-    if CDHit3 > 14:
+    if CDHit3 > 17:
       CDHit3 /= 2
 
 def RageCDRemoval():
   global RageCD
   if RageCD > 1 and Rage >= 2:
     RageCD -= 1
+  elif RageCD == 2 and Rage < 2:
+    RageCD = 2
   elif RageCD == 1 and Rage < 2:
-    RageCD -= 0
+    RageCD = 10
 
 def RageUse():
   global Rage
