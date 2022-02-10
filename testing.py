@@ -133,8 +133,7 @@ def punch_combo_CD():
   if Rage < 2 and RageCD < 10:
     CDHit3 *= 1
   elif Rage >= 2 and RageCD == 10:
-    if RageCD == 10:
-      CDHit3 *= 2
+    CDHit3 *= 2
     RageCDCheck()
   ThugHP -= CDHit3
   Rage += .05
