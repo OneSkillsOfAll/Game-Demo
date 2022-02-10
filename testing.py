@@ -113,7 +113,7 @@ def punch_combo_CD():
     CDHit2 *= 1
     print("You need to do", str(RageCD) + " more move(s)")
   elif Rage >= 2 and RageCD == 10:
-    CDHit2 *= 2
+    CDHit2 *= 1
     RageCD -= 1
     RageCDCheck()
   ThugHP -= CDHit2
@@ -123,6 +123,7 @@ def punch_combo_CD():
     CDHit1 *= 1
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
+    CDHit1 *= 2
   elif Rage >= 2 and RageCD == 1:
     CDHit1 *= 2
     RageCD == 10
