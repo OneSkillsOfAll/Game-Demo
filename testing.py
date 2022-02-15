@@ -241,9 +241,9 @@ def barrage_CD():
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     RageUse()
-    if Rage < 2:
+    if Rage < 2 and RageCD > 2:
       CDBarrageDMG *= 1
-    else:
+    elif Rage >= 2 and RageCD <= 2:
       CDBarrageDMG *= 2
       RageCD -= 1
     ThugHP -= CDBarrageDMG
