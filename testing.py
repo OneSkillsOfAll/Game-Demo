@@ -22,6 +22,7 @@ ThugHP = 100
 Melt = 0
 Rage = 1
 PainSens = 1
+RageCount = 1
 
 def RageCDCheck():
   global RageCD
@@ -68,6 +69,7 @@ def RageUse():
     CDHit3 *= 2
     CDDMG *= 2
     CDBarrageDMG *= 2
+    RageCount += 1
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
     CDHit1 *= 2
@@ -75,8 +77,16 @@ def RageUse():
     CDHit3 *= 2
     CDDMG *= 2
     CDBarrageDMG *= 2
+    RageCount += 1
   elif Rage >= 2 and RageCD == 0:
     Rage = 1
+
+def RageDivide():
+  if RageCount >= 3:
+    CDHit1 /= RageCount
+    CDHit2 /= RageCount
+    CDHit3 /= RageCount
+    CDDMG /= RageCount
 
 def PainCheck():
   global PainCD
