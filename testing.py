@@ -124,7 +124,7 @@ def punch_combo_CD():
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
   if Rage < 2 and RageCD < 10:
-    print("You need to do", str(RageCD) + " more move(s)")
+    CDHit1 *= 1
   elif Rage >= 2 and RageCD == 10:
     RageCD -= 1
     RageCDCheck()
