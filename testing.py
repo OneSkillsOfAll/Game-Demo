@@ -28,9 +28,7 @@ def RageCDCheck():
   global CDHit1
   global CDHit2
   global CDHit3
-  if RageCD > 1 and Rage >= 2:
-    RageCD -= 1
-  elif RageCD > 2 and Rage >= 2:
+  if RageCD > 2 and Rage >= 2:
     if CDHit1 > 17:
       CDHit1 /= 2
     if CDHit2 > 17:
@@ -40,7 +38,9 @@ def RageCDCheck():
 
 def RageCDRemoval():
   global RageCD
-  if RageCD > 1 and Rage >= 2:
+  if Rage == 0:
+    RageCD = 10
+  elif RageCD > 1 and Rage >= 2:
     RageCD -= 1
   elif RageCD == 2 and Rage < 2:
     RageCD = 2
@@ -98,7 +98,7 @@ def punch_combo_CD():
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
     CDHit1 * 2
-  elif Rage >= 2 and RageCD == 1:
+  elif Rage >= 2 and RageCD == 0:
     CDHit1 *= 2
     RageCD == 10
     Rage = 1
@@ -124,7 +124,7 @@ def punch_combo_CD():
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
     CDHit1 *= 2
-  elif Rage >= 2 and RageCD == 1:
+  elif Rage >= 2 and RageCD == 0:
     CDHit1 *= 2
     RageCD == 10
   print("-" + str(round(CDHit2, 2)))
@@ -142,7 +142,7 @@ def punch_combo_CD():
     CDHit1 *= 1
   elif Rage >= 2 and RageCD == 2:
     Rage = 2
-  elif Rage >= 2 and RageCD == 1:
+  elif Rage >= 2 and RageCD == 0:
     CDHit1 *= 2
     RageCD == 10
   print("-" + str(round(CDHit3, 2)))
@@ -254,7 +254,7 @@ def barrage_CD():
       CDBarrageDMG *= 1
     elif Rage >= 2 and RageCD == 2:
       Rage = 2
-    elif Rage >= 2 and RageCD == 1:
+    elif Rage >= 2 and RageCD == 0:
       CDBarrageDMG *= 2
       RageCD == 10
     time.sleep(0.1)
@@ -335,7 +335,7 @@ def bearing_shot():
       CDDMG *= 1
     elif Rage >= 2 and RageCD == 2:
       Rage = 2
-    elif Rage >= 2 and RageCD == 1:
+    elif Rage >= 2 and RageCD == 0:
       CDDMG *= 2
       RageCD == 10
     RageCDCheck()
