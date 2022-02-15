@@ -93,15 +93,6 @@ def punch_combo_CD():
   CDHit2 = round(random.uniform(5, 8.5), 1)
   CDHit3 = round(random.uniform(5, 8.5), 1)
   RageUse()
-  if Rage < 2 and RageCD > 1:
-    CDHit1 *= 1
-  elif Rage >= 2 and RageCD == 2:
-    Rage = 2
-    CDHit1 * 2
-  elif Rage >= 2 and RageCD == 0:
-    CDHit1 *= 2
-    RageCD == 10
-    Rage = 1
   RageCDCheck()
   ThugHP -= CDHit1
   Rage += .05
@@ -119,14 +110,6 @@ def punch_combo_CD():
   ThugHP -= CDHit2
   Rage += .05
   RageUse()
-  if Rage < 2 and RageCD > 1:
-    CDHit1 *= 1
-  elif Rage >= 2 and RageCD == 2:
-    Rage = 2
-    CDHit1 *= 2
-  elif Rage >= 2 and RageCD == 0:
-    CDHit1 *= 2
-    RageCD == 10
   print("-" + str(round(CDHit2, 2)))
   print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.5)
@@ -138,13 +121,6 @@ def punch_combo_CD():
   ThugHP -= CDHit3
   Rage += .05
   RageUse()
-  if Rage < 2 and RageCD > 1:
-    CDHit1 *= 1
-  elif Rage >= 2 and RageCD == 2:
-    Rage = 2
-  elif Rage >= 2 and RageCD == 0:
-    CDHit1 *= 2
-    RageCD == 10
   print("-" + str(round(CDHit3, 2)))
   print("Your rage is", str(round(Rage, 2)))
   time.sleep(0.25)
@@ -241,22 +217,10 @@ def barrage_CD():
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     RageUse()
-    if Rage < 2 and RageCD > 2:
-      CDBarrageDMG *= 1
-    elif Rage >= 2 and RageCD <= 2:
-      CDBarrageDMG *= 2
-      RageCD -= 1
     ThugHP -= CDBarrageDMG
     print("-" + str(round(CDBarrageDMG, 3)))
     Rage += 0.015
     RageUse()
-    if Rage < 2 and RageCD > 1:
-      CDBarrageDMG *= 1
-    elif Rage >= 2 and RageCD == 2:
-      Rage = 2
-    elif Rage >= 2 and RageCD == 0:
-      CDBarrageDMG *= 2
-      RageCD == 10
     time.sleep(0.1)
   time.sleep(0.5)
   if Rage < 2:
