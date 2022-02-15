@@ -24,6 +24,8 @@ Rage = 1
 PainSens = 1
 RageCount = 1
 
+term = Terminal()
+
 def RageCDCheck():
   global RageCD
   global CDHit1
