@@ -75,7 +75,7 @@ def RageUse():
     CDHit3 *= 2
     CDDMG *= 2
     CDBarrageDMG *= 2
-  elif Rage >= 2 and RageCD == 1:
+  elif Rage >= 2 and RageCD == 0:
     Rage = 1
 
 def PainCheck():
