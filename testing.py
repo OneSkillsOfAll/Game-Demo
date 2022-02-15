@@ -40,7 +40,7 @@ def RageCDRemoval():
   global RageCD
   if Rage == 0:
     RageCD = 10
-  elif RageCD > 1 and Rage >= 2:
+  elif RageCD > 2 and Rage >= 2:
     RageCD -= 1
   elif RageCD == 2 and Rage < 2:
     RageCD = 2
