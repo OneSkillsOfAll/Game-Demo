@@ -58,6 +58,7 @@ def RageUse():
   global CDHit3
   global CDDMG
   global CDBarrageDMG
+  global RageCount
   if Rage < 2 and RageCD > 1:
     CDHit1 *= 1
     CDHit2 *= 1
@@ -120,7 +121,7 @@ def punch_combo_CD():
   Rage += .05
   RageUse()
   print(term.red("-" + str(round(CDHit1, 2))))
-  print(term.orange("Your rage is", str(round(Rage, 2))))
+  print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
   if Rage < 2 and RageCD < 10:
     print("You need to do", str(RageCD) + " more move(s)")
@@ -131,7 +132,7 @@ def punch_combo_CD():
   Rage += .05
   RageUse()
   print(term.red("-" + str(round(CDHit2, 2))))
-  print(term.orange("Your rage is", str(round(Rage, 2))))
+  print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
   if Rage < 2 and RageCD < 10:
     CDHit3 *= 1
@@ -141,7 +142,7 @@ def punch_combo_CD():
   Rage += .05
   RageUse()
   print(term.red("-" + str(round(CDHit3, 2))))
-  print(term.orange("Your rage is", str(round(Rage, 2))))
+  print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.25)
   if ThugHP <= 0:
     Rage = 1
@@ -253,7 +254,7 @@ def barrage_CD():
     Rage += 0.04
     print(term.red("-7.5"))
   RageUse()
-  print(term.orange("Your rage is", str(round(Rage, 2))))
+  print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
   if ThugHP <= 0:
     Rage = 1
@@ -322,8 +323,8 @@ def bearing_shot():
       RageCD == 10
     RageCDCheck()
     ThugHP -= round(CDDMG, 2)
-    print("-" + str(round(CDDMG, 2)))
-    print(term.orange("Your rage is", str(round(Rage, 2))))
+    print(term.red("-" + str(round(CDDMG, 2))))
+    print(term.orange("Your rage is ", str(round(Rage, 2))))
   else:
     print("The bullet missed!")
   time.sleep(0.5)
@@ -341,7 +342,7 @@ def bearing_shot():
   ThugHP -= round(CDDMG, 2)
   Rage += 0.1
   print(term.red("-" + str(round(CDDMG, 2))))
-  print(term.orange("Your rage is", str(round(Rage, 2))))
+  print(term.orange("Your rage is ", str(round(Rage, 2))))
   RageUse()
   time.sleep(0.5)
   if ThugHP <= 0:
@@ -434,6 +435,7 @@ def Thugshot():
   global ThugHP
   global HP
   global Rage
+  global RageCount
   shot = random.choice(thugshot)
   print("The thug goes for the kill")
   time.sleep(0.5)
@@ -446,7 +448,7 @@ def Thugshot():
     Rage += 0.15
     RageUse()
     if ability == 'CD':
-      print(term.orange("Your rage is", str(round(Rage, 2))))
+      print(term.orange("Your rage is ", str(round(Rage, 2))))
     if HP > 0:
       print("You have", round(HP, 1), "HP left")
       time.sleep(0.5)
@@ -462,7 +464,7 @@ def Thugshot():
       RageUse()
       print(term.red("-" + str(round(ThugDMG, 2))))
       if ability == 'CD':
-        print(term.orange("Your rage is", str(round(Rage, 2))))
+        print(term.orange("Your rage is ", str(round(Rage, 2))))
       time.sleep(0.5)
     if HP > 0:
       print("You have", round(HP, 1), "HP left")
