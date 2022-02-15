@@ -244,7 +244,6 @@ def barrage_CD():
   else:
     print("He has", round(ThugHP, 2), "HP left")
     time.sleep(1)
-  RageCD -= 1
   if RageCD == 0:
     RageCD = 10
   print("You need to do", str(RageCD) + " more move(s)")
