@@ -14,6 +14,7 @@ CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
 CDDMG = True
+CDDMG2 = True
 Pain = True
 RageCD = 2
 PainCD = 1
@@ -193,13 +194,12 @@ def barrage_CD():
   global RageCD
   global PainCD
   global CDBarrageDMG
+  RageUse()
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
-    RageUse()
     ThugHP -= CDBarrageDMG
     print(term.red("-" + str(round(CDBarrageDMG, 3))))
     Rage += 0.015
-    RageUse()
     time.sleep(0.1)
   time.sleep(0.5)
   if Rage < 2:
@@ -222,7 +222,7 @@ def barrage_CD():
   else:
     print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
-  if RageCD == 0:
+  if RageCD <= 0:
     RageCD = 10
   print("You need to do", str(RageCD) + " more move(s)")
 
@@ -301,7 +301,7 @@ def bearing_shot():
     print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
   time.sleep(0.5)
-  if RageCD == 0:
+  if RageCD <= 0:
     RageCD = 10
   print("You need to do", str(RageCD) + " more move(s)")
 
