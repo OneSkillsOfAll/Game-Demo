@@ -113,7 +113,7 @@ def punch_combo_CD():
   else:
     print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
-  print("You need to do", str(RageCD) + " more move(s)")
+  print("You need to do", str(RageCD) + " more move(s) to reset your rage and its cooldown")
   time.sleep(0.5)
 
 def punch_combo_GE():
@@ -195,14 +195,12 @@ def barrage_CD():
   global RageCD
   global PainCD
   global CDBarrageDMG
-  RageUse()
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
     ThugHP -= CDBarrageDMG
     print(term.red("-" + str(round(CDBarrageDMG, 3))))
     time.sleep(0.1)
   time.sleep(0.5)
-  Rage += 0.3
   if Rage < 2:
     ThugHP -= 3.75
     Rage += 0.02
@@ -211,7 +209,7 @@ def barrage_CD():
     ThugHP -= 7.5
     Rage += 0.04
     print(term.red("-7.5"))
-  RageUse()
+  Rage += 0.3
   time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
@@ -225,7 +223,7 @@ def barrage_CD():
     time.sleep(1)
   if RageCD <= 0:
     RageCD = 10
-  print("You need to do", str(RageCD) + " more move(s)")
+  print("You need to do", str(RageCD) + " more move(s) to reset your rage and its cooldown")
 
 def barrage_GE():
   global ThugHP
@@ -304,7 +302,7 @@ def bearing_shot():
   time.sleep(0.5)
   if RageCD <= 0:
     RageCD = 10
-  print("You need to do", str(RageCD) + " more move(s)")
+  print("You need to do", str(RageCD) + " more move(s) to reset your rage and its cooldown")
 
 def Sand_Ant_Spray():
   global ThugHP
