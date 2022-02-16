@@ -33,6 +33,7 @@ def RageUse():
   global CDHit2
   global CDHit3
   global CDDMG
+  global CDDMG2
   global CDBarrageDMG
   global RageCount
   if Rage < 2 and RageCD > 1:
