@@ -146,11 +146,11 @@ def punch_combo_CD():
   time.sleep(0.25)
   if ThugHP <= 0:
     Rage = 1
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
   print("You need to do", str(RageCD) + " more move(s)")
   RageCDRemoval()
@@ -184,12 +184,12 @@ def punch_combo_GE():
   if PainCD > 0:
    PainCD -= 1
   if ThugHP <= 0:
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 0
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
 
 def Shoot():
@@ -224,8 +224,8 @@ def Shoot():
   else:
     Head = True
     ThugHP = 0
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(1)
 
 def barrage_CD():
@@ -254,15 +254,16 @@ def barrage_CD():
     Rage += 0.04
     print(term.red("-7.5"))
   RageUse()
+  time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
   if ThugHP <= 0:
     Rage = 1
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
   if RageCD == 0:
     RageCD = 10
@@ -293,12 +294,12 @@ def barrage_GE():
   if PainCD > 0:
     PainCD -= 1
   if ThugHP <= 0:
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 1
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
 
 def bearing_shot():
@@ -348,11 +349,11 @@ def bearing_shot():
   time.sleep(0.5)
   if ThugHP <= 0:
     Rage = 1
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
   time.sleep(0.5)
   if RageCD == 0:
@@ -383,11 +384,11 @@ def Sand_Ant_Spray():
     PainCD -= 1
   if ThugHP <= 0:
     print("He has HP 0 left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 1
     time.sleep(1)
   else:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
 
 def Heal():
@@ -396,11 +397,11 @@ def Heal():
   print("Dude, do you are have the stupid?\nYou just healed the thug back to 100 HP.")
   time.sleep(2.5)
   if ThugHP > 0:
-    print(term.green("He has", round(ThugHP, 2), "HP left"))
+    print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
   else:
-    print("He has 0 HP left")
-    print(term.webgreen("You had", round(HP), "HP left"))
+    print(term.green("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
 
 def Pain_Sens():
   if PainCheck() == True:
@@ -421,11 +422,11 @@ def Pain_Sens():
      PainCD = 10
     if ThugHP <= 0:
       print("He has HP 0 left")
-      print(term.webgreen("You had", round(HP), "HP left"))
+      print(term.webgreen("You had ", str(round(HP)), "HP left"))
       PainCD = 0 
       time.sleep(1)
     else:
-      print(term.green("He has", round(ThugHP, 2), "HP left"))
+      print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
       time.sleep(1)
   else:
     print("You have", str(PainCD) + " moves left")
@@ -451,7 +452,7 @@ def Thugshot():
     if ability == 'CD':
       print(term.orange("Your rage is ", str(round(Rage, 2))))
     if HP > 0:
-      print("You have", round(HP, 1), "HP left")
+      print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
       time.sleep(0.5)
     else:
       print("Y O U  D I E D")
@@ -468,7 +469,7 @@ def Thugshot():
         print(term.orange("Your rage is ", str(round(Rage, 2))))
       time.sleep(0.5)
     if HP > 0:
-      print("You have", round(HP, 1), "HP left")
+      print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
       time.sleep(0.5)
     else:
       print("Y O U  D I E D")

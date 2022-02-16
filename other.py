@@ -1,3 +1,4 @@
 from blessed import Terminal
 term = Terminal()
-print(term.red("Joe"))
+print(term.green("Joe"))
+print(term.webgreen("Mama"))
