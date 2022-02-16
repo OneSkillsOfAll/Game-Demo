@@ -65,15 +65,7 @@ def RageUse():
     CDHit3 *= 1
     CDDMG *= 1
     CDBarrageDMG *= 1
-  elif Rage >= 2 and RageCD > 1:
-    Rage = 2
-    CDHit1 *= 2
-    CDHit2 *= 2
-    CDHit3 *= 2
-    CDDMG *= 2
-    CDBarrageDMG *= 2
-    RageCount += 1
-  elif Rage >= 2 and RageCD == 2:
+  elif Rage >= 2 and RageCD <= 2:
     Rage = 2
     CDHit1 *= 2
     CDHit2 *= 2
