@@ -56,6 +56,8 @@ def RageUse():
   elif Rage >= 2 and RageCD == 0:
     Rage = 1
     RageCD = 10
+  elif Rage >= 2 and RageCD > 0:
+    Rage = 1
 
 def PainCheck():
   global PainCD
