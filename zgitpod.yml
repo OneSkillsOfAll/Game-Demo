@@ -9,5 +9,5 @@ vscode:
   extensions:
     - ms-python.python
     - ms-toolsai.jupyter
-# pip install inquirer
+# pip install inquirer usually on replit
 # (python [file].py) to run
