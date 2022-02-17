@@ -116,7 +116,8 @@ def punch_combo_CD():
     time.sleep(1)
   if RageCD <= 0:
     RageCD = 10
-  print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  if ThugHP >= 0:
+    print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   time.sleep(0.5)
 
 def punch_combo_GE():
@@ -229,7 +230,8 @@ def barrage_CD():
     time.sleep(1)
   if RageCD <= 0:
     RageCD = 10
-  print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  if ThugHP >= 0:
+    print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 
 def barrage_GE():
   global ThugHP
@@ -307,7 +309,8 @@ def bearing_shot():
   time.sleep(0.5)
   if RageCD <= 0:
     RageCD = 10
-  print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  if ThugHP >= 0:
+    print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 
 def Sand_Ant_Spray():
   global ThugHP
