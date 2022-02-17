@@ -202,14 +202,15 @@ def barrage_CD():
     print(term.red("-" + str(round(CDBarrageDMG, 3))))
     time.sleep(0.1)
   time.sleep(0.5)
-  if Rage < 2:
+  if Rage < 2 and RageCD > 2:
     ThugHP -= 3.75
     Rage += 0.02
     print(term.red("-3.75"))
-  else:
+  elif Rage >= 2 and RageCD <= 2:
     ThugHP -= 7.5
     Rage += 0.04
     print(term.red("-7.5"))
+    RageCD -= 1
   Rage += 0.3
   Rageis2()
   time.sleep(0.5)
