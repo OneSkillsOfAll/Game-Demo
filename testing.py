@@ -271,6 +271,7 @@ def bearing_shot():
   global RageCD
   global BulletOdds
   global CDDMG
+  global CDDMG2
   print("The bullet fires!")
   time.sleep(0.25)
   RageUse()
