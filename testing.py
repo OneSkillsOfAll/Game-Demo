@@ -93,20 +93,12 @@ def punch_combo_CD():
   print(term.red("-" + str(round(CDHit1, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
-  if Rage < 2 and RageCD < 10:
-    CDHit1 *= 1
-  elif Rage >= 2 and RageCD == 10:
-    RageCD -= 1
   ThugHP -= CDHit2
   Rage += .05
   Rageis2()
   print(term.red("-" + str(round(CDHit2, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
-  if Rage < 2 and RageCD < 10:
-    CDHit3 *= 1
-  elif Rage >= 2 and RageCD == 10:
-    CDHit3 *= 1
   ThugHP -= CDHit3
   Rage += .05
   Rageis2()
@@ -201,7 +193,6 @@ def barrage_CD():
   global ThugHP
   global Rage
   global RageCD
-  global PainCD
   global CDBarrageDMG
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
