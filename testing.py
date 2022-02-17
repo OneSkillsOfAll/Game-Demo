@@ -104,7 +104,7 @@ def punch_combo_CD():
   print(term.red("-" + str(round(CDHit3, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.25)
-  if Rage >= 2 and RageCD <= 2:
+  if Rage >= 2 and RageCD <= 2 and CDHit1 >= 10 or CDHit2 >= 10 or CDHit3 >= 10:
     RageCD -= 1
   if ThugHP <= 0:
     Rage = 1
