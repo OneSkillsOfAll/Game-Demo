@@ -131,9 +131,9 @@ def punch_combo_GE():
     Pain = 1
   else:
     Pain = 1.5
-  GEHit1 = round(random.uniform(4, 7), 1)
-  GEHit2 = round(random.uniform(4, 7), 1)
-  GEHit3 = round(random.uniform(4, 7), 1)
+  GEHit1 = round(random.uniform(5, 8), 1)
+  GEHit2 = round(random.uniform(5, 8), 1)
+  GEHit3 = round(random.uniform(5, 8), 1)
   GEHit1 *= Pain
   ThugHP -= GEHit1
   print("-" + str(round(GEHit1, 1)))
@@ -240,7 +240,7 @@ def barrage_GE():
     Pain = 1
   else:
     Pain = 1.5
-  for a in range (18):
+  for a in range (20):
     GEBarrageDMG = round(random.uniform(0.5, 1), 1)
     GEBarrageDMG *= Pain
     ThugHP -= GEBarrageDMG
@@ -329,7 +329,7 @@ def Sand_Ant_Spray():
   time.sleep(0.5)
   print("The ants bite")
   time.sleep(0.5)
-  GEDMG = round(random.uniform(10,20), 1)
+  GEDMG = round(random.uniform(11,22), 1)
   GEDMG *= Pain
   ThugHP -= GEDMG
   print("-" + str(round(GEDMG, 2)))
