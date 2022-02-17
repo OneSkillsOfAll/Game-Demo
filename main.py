@@ -247,7 +247,7 @@ def barrage_GE():
   time.sleep(0.5)
   if Pain == 1:
     ThugHP -= 3.75
-    print(term.red("-3.75")))
+    print(term.red("-3.75"))
   elif Pain == 1.5:
     ThugHP -= 5.5
     print(term.red("-5.5"))
