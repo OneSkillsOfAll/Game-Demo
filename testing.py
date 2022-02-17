@@ -114,6 +114,8 @@ def punch_combo_CD():
   else:
     print(term.green("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(1)
+  if RageCD <= 0:
+    RageCD = 10
   print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   time.sleep(0.5)
 
