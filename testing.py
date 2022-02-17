@@ -44,7 +44,7 @@ def RageUse():
     CDDMG *= 1
     CDDMG2 *= 1
     CDBarrageDMG *= 1
-  elif Rage >= 2 and RageCD <= 2 and RageCD > 0:
+  elif Rage >= 2 and RageCD > -1:
     Rage = 2
     CDHit1 *= 2
     CDHit2 *= 2
@@ -53,10 +53,10 @@ def RageUse():
     CDDMG2 *= 1
     CDBarrageDMG *= 2
     RageCD -= 1
-  elif Rage >= 2 and RageCD == 0:
+  elif Rage >= 2 and RageCD == -1:
     Rage = 1
     RageCD = 10
-  elif Rage >= 2 and RageCD > 0:
+  elif Rage >= 2 and RageCD > -1:
     Rage = 1
 
 def Rageis2():
@@ -205,9 +205,9 @@ def barrage_CD():
   global RageCD
   global PainCD
   global CDBarrageDMG
-  RageUse()
   for a in range(20):
     CDBarrageDMG = round(random.uniform(0.5, 0.75), 3)
+    
     ThugHP -= CDBarrageDMG
     print(term.red("-" + str(round(CDBarrageDMG, 3))))
     time.sleep(0.1)
