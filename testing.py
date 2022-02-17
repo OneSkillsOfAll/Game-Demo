@@ -52,7 +52,6 @@ def RageUse():
     CDDMG *= 2
     CDDMG2 *= 1
     CDBarrageDMG *= 2
-    RageCD -= 1
   elif Rage >= 2 and RageCD <= 0:
     Rage = 1
     RageCD = 10
@@ -105,6 +104,8 @@ def punch_combo_CD():
   print(term.red("-" + str(round(CDHit3, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.25)
+  if Rage >= 2 and RageCD <= 2:
+    RageCD -= 1
   if ThugHP <= 0:
     Rage = 1
     print(term.green("He has 0 HP left"))
@@ -282,12 +283,11 @@ def bearing_shot():
   print("The bullet comes back!")
   time.sleep(0.5)
   CDDMG2 = round(random.uniform(3.75, 14), 2)
-  if Rage < 2:
+  if Rage < 2 and RageCD > 2:
     CDDMG2 *= 1
-  else:
-    if RageCD == 10:
-      CDDMG2 *= 2
-      RageCD -= 1
+  elif Rage >= 2 and RageCD <= 2:
+    CDDMG2 *= 2
+    RageCD -= 1
   ThugHP -= round(CDDMG2, 2)
   Rage += 0.1
   print(term.red("-" + str(round(CDDMG2, 2))))
