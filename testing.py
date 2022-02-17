@@ -279,6 +279,7 @@ def bearing_shot():
   if BulletOdds != 3:
     CDDMG = round(random.uniform(7, 14), 2)
     Rage += 0.075
+    Rageis2()
     ThugHP -= round(CDDMG, 2)
     print(term.red("-" + str(round(CDDMG, 2))))
     print(term.orange("Your rage is ", str(round(Rage, 2))))
@@ -295,6 +296,7 @@ def bearing_shot():
     RageCD -= 1
   ThugHP -= round(CDDMG2, 2)
   Rage += 0.1
+  Rageis2()
   print(term.red("-" + str(round(CDDMG2, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   RageUse()
