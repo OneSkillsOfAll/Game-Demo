@@ -90,18 +90,19 @@ def punch_combo_CD():
   Rage += .05
   Rageis2()
   print(term.red("-" + str(round(CDHit1, 2))))
-  time.sleep(1)
+  time.sleep(0.5)
   ThugHP -= CDHit2
   Rage += .05
   Rageis2()
   print(term.red("-" + str(round(CDHit2, 2))))
-  time.sleep(1)
+  time.sleep(0.5)
   ThugHP -= CDHit3
   Rage += .05
   Rageis2()
   print(term.red("-" + str(round(CDHit3, 2))))
+  time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
-  time.sleep(0.25)
+  time.sleep(0.5)
   if Rage >= 2 and RageCD <= 2 and CDHit1 >= 10 or CDHit2 >= 10 or CDHit3 >= 10:
     RageCD -= 1
   if ThugHP <= 0:
@@ -135,15 +136,15 @@ def punch_combo_GE():
   GEHit1 *= Pain
   ThugHP -= GEHit1
   print(term.red("-" + str(round(GEHit1, 1))))
-  time.sleep(1)
+  time.sleep(0.5)
   GEHit2 *= Pain
   ThugHP -= GEHit2
   print(term.red("-" + str(round(GEHit2, 1))))
-  time.sleep(1)
+  time.sleep(0.5)
   GEHit3 *= Pain
   ThugHP -= GEHit3
   print(term.red("-" + str(round(GEHit3, 1))))
-  time.sleep(1)
+  time.sleep(0.5)
   if PainCD > 0:
    PainCD -= 1
   if ThugHP <= 0:
@@ -275,7 +276,7 @@ def bearing_shot():
   global CDDMG
   global CDDMG2
   print("The bullet fires!")
-  time.sleep(0.25)
+  time.sleep(0.5)
   RageUse()
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
