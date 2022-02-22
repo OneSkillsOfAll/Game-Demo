@@ -447,29 +447,29 @@ print("""\nWoah what a weird house, doesn't look like anyone will shoot me with 
 Oh look, I got shot with an arrow that's golden.""")
 ability = random.choice(power)
 if ability == 'CD':
-  print("\nLiterally God himself: You now have the ability to heal or fix anything else but yourself, including objects.")
+  print("\nLiterally God himself: You now have the ability to heal or fix anything else but yourself, including objects.\nThis affects your abilities.")
 elif ability == 'GE':
-  print("\nLiterally God himself: You can now grow organic materials out of inorganic materials and heal yourself.")
+  print("\nLiterally God himself: You can now grow organic materials out of inorganic materials and heal yourself.\nThis affects your abilities.")
 elif ability == 'CUSTOMHEAL':
-  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, the limb that is hit loses function and loses blood \nto that limb and can ricochet until it hits its target. \nYou can also now heal yourself, but after a cooldown for a healing syrum dart.")
+  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, the limb that is hit loses function and loses blood \nto that limb and can ricochet until it hits its target. \nYou can also now heal yourself, but after a cooldown for a healing syrum dart. \nThis affects your abilities.")
 #elif ability == 'SPTW':
-#  print("\nLiterally God himself: You can now stop time for five relative seconds and use it to your advantage with extreme core power.")
+#  print("\nLiterally God himself: You can now stop time for five relative seconds and use it to your advantage with extreme core power.\nThis affects your abilities.")
 #elif ability == 'CUSTOMPOWER':
-#  print("\nLiterally God himself: You can expose others to concentrated and immedeate radiation effects and fine radioactive sand. \nThe radiation can be healed overtime if there is no exposure after 30 seconds.")
+#  print("\nLiterally God himself: You can expose others to concentrated and immedeate radiation effects and fine radioactive sand. \nThe radiation can be healed overtime if there is no exposure after 30 seconds.\nThis affects your abilities.")
 #elif ability == 'CUSTOMPOWER2':
-#  print("\nLiterally God himself: You can now form objects using your imagination that is also limited by the will of your fighting spirit.")
+#  print("\nLiterally God himself: You can now form objects using your imagination that is also limited by the will of your fighting spirit.\nThis affects your abilities.")
 #elif ability == 'LIMBLOSS':
-#  print("\nLiterally God himself: Whenever you touch an opponent's limb, you can control it in any way you want, \nyou can even make their limb lose function and blood.")
+#  print("\nLiterally God himself: Whenever you touch an opponent's limb, you can control it in any way you want, \nyou can even make their limb lose function and blood.\nThis affects your abilities.")
 #elif ability == 'ICEMELT':
-#  print("\nLiterally God himself: The closer opponents are to you, the more your opponents melt until they are dead.")
+#  print("\nLiterally God himself: The closer opponents are to you, the more your opponents melt until they are dead.\nThis affects your abilities.")
 #elif ability == 'MIH':
-#  print("\nLiterally God himself: Travel at almost infinite speed at an infinite acceleration rate. You have limited core power, though.")
+#  print("\nLiterally God himself: Travel at almost infinite speed at an infinite acceleration rate. You have limited core power, though.\nThis affects your abilities.")
 #elif ability == 'CUSTOMSPEED':
-#  print("\nLiterally God himself: Make others travel at a high speed (100mph to 300 mph) uncontrollably if you touch them.")
+#  print("\nLiterally God himself: Make others travel at a high speed (100mph to 300 mph) uncontrollably if you touch them.\nThis affects your abilities.")
 #elif ability == 'CUSTOMSPEED2':
-#  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.")
+#  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.\nThis affects your abilities.")
 #elif ability == 'GERKC':
-#  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.")
+#  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.\nThis affects your abilities.")
 print("\nSo apparently some guy wants to beat you down, because you've been crippled by the arrow. Don't question.")
 if ability == 'CD':
   def CD():
