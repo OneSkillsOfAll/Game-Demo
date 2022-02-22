@@ -286,7 +286,6 @@ def bearing_shot():
       Rage += 0.075
     elif Rage >= 2 and RageCD <= 2:
       CDDMG *= 2
-      RageCD -= 1
     ThugHP -= round(CDDMG, 2)
     Rageis2()
     print(term.red("-" + str(round(CDDMG, 2))))
@@ -558,8 +557,8 @@ elif ability == 'GE':
         print("Y O U  D I E D")
         time.sleep(2)
         sys.exit()
-    if ThugHP <= 0:
-      print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
+  if ThugHP <= 0:
+    print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
 elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
