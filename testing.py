@@ -208,6 +208,10 @@ def barrage_CD():
     ThugHP -= 3.75
     Rage += 0.02
     print(term.red("-3.75"))
+  elif Rage < 2 and RageCD <= 2:
+    ThugHP -= 3.5
+    Rage += 0.02
+    print(term.red("-3.75"))
   elif Rage >= 2 and RageCD <= 2:
     ThugHP -= 7.5
     Rage += 0.04
@@ -276,9 +280,14 @@ def bearing_shot():
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
     CDDMG = round(random.uniform(7, 14), 2)
-    Rage += 0.075
-    Rageis2()
+    if Rage < 2 and RageCD >= 2:
+      CDDMG *= 1
+      Rage += 0.075
+    elif Rage >= 2 and RageCD <= 2:
+      CDDMG *= 2
+      RageCD -= 1
     ThugHP -= round(CDDMG, 2)
+    Rageis2()
     print(term.red("-" + str(round(CDDMG, 2))))
     print(term.orange("Your rage is ", str(round(Rage, 2))))
   else:
