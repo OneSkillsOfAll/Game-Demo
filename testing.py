@@ -557,6 +557,8 @@ elif ability == 'GE':
         print("Y O U  D I E D")
         time.sleep(1)
         sys.exit()
+    if ThugHP <= 0:
+      print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
 elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
