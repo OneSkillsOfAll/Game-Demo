@@ -373,8 +373,8 @@ def Pain_Sens():
     global PainCD
     print("You punch the enemy")
     time.sleep(1)
-    ThugHP -= 4.5
-    print(term.red("-4.5"))
+    ThugHP -= 7.5
+    print(term.red("-7.5"))
     time.sleep(1)
     Pain = 1.5
     print("Damage has been increased")
