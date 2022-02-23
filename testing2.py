@@ -15,13 +15,13 @@ CDHit3 = True
 CDBarrageDMG = True
 CDDMG = True
 CDDMG2 = True
-Pain = True
-RageCD = 2
-PainCD = 1
 HP = 100
 ThugHP = 100
-Melt = 0
 Rage = 1
+Pain = 1
+Venom = 1
+RageCD = 2
+PainCD = 1
 PainSens = 1
 RageCount = 1
 
