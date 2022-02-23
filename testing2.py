@@ -100,23 +100,24 @@ def punch_combo_CD():
   Rage += .05
   Rageis2()
   print(term.red("-" + str(round(CDHit3, 2))))
+  time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
-  time.sleep(0.25)
+  time.sleep(0.5)
   if Rage >= 2 and RageCD <= 2 and CDHit1 >= 10 or CDHit2 >= 10 or CDHit3 >= 10:
     RageCD -= 1
   if ThugHP <= 0:
     Rage = 1
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   if RageCD <= 0:
     RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
-  time.sleep(0.5)
+  time.sleep(1)
 
 def punch_combo_GE():
   global HP
@@ -150,10 +151,10 @@ def punch_combo_GE():
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 0
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
 
 def Shoot():
   global ThugHP
@@ -189,7 +190,7 @@ def Shoot():
     ThugHP = 0
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
 
 def barrage_CD():
   global ThugHP
@@ -203,7 +204,7 @@ def barrage_CD():
     ThugHP -= CDBarrageDMG
     print(term.red("-" + str(round(CDBarrageDMG, 3))))
     time.sleep(0.1)
-  time.sleep(0.5)
+  time.sleep(1)
   if Rage < 2 and RageCD > 2:
     ThugHP -= 3.75
     Rage += 0.02
@@ -219,17 +220,17 @@ def barrage_CD():
     RageCD -= 1
   Rage += 0.3
   Rageis2()
-  time.sleep(0.5)
+  time.sleep(1)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
-  time.sleep(0.5)
+  time.sleep(1)
   if ThugHP <= 0:
     Rage = 1
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   if RageCD <= 0:
     RageCD = 10
   if ThugHP >= 0:
@@ -248,24 +249,24 @@ def barrage_GE():
     ThugHP -= GEBarrageDMG
     print(term.red("-" + str(round(GEBarrageDMG, 3))))
     time.sleep(0.1)
-  time.sleep(0.5)
+  time.sleep(1)
   if Pain == 1:
     ThugHP -= 3.75
     print(term.red("-3.75"))
   elif Pain == 1.5:
     ThugHP -= 5.5
     print(term.red("-5.5"))
-  time.sleep(0.5)
+  time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
   if ThugHP <= 0:
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 1
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
 
 def bearing_shot():
   global ThugHP
@@ -275,7 +276,7 @@ def bearing_shot():
   global CDDMG
   global CDDMG2
   print("The bullet fires!")
-  time.sleep(0.25)
+  time.sleep(0.5)
   RageUse()
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
@@ -285,16 +286,15 @@ def bearing_shot():
       Rage += 0.075
     elif Rage >= 2 and RageCD <= 2:
       CDDMG *= 2
-      RageCD -= 1
     ThugHP -= round(CDDMG, 2)
     Rageis2()
     print(term.red("-" + str(round(CDDMG, 2))))
     print(term.orange("Your rage is ", str(round(Rage, 2))))
   else:
     print("The bullet missed!")
-  time.sleep(0.5)
+  time.sleep(1)
   print("The bullet comes back!")
-  time.sleep(0.5)
+  time.sleep(1)
   CDDMG2 = round(random.uniform(3.75, 14), 2)
   if Rage < 2 and RageCD > 2:
     CDDMG2 *= 1
@@ -307,16 +307,16 @@ def bearing_shot():
   print(term.red("-" + str(round(CDDMG2, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   RageUse()
-  time.sleep(0.5)
+  time.sleep(1)
   if ThugHP <= 0:
     Rage = 1
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
-  time.sleep(0.5)
+    time.sleep(2)
+  time.sleep(1)
   if RageCD <= 0:
     RageCD = 10
   if ThugHP >= 0:
@@ -331,26 +331,26 @@ def Sand_Ant_Spray():
   else:
     Pain = 1.5
   print("You throw the sand")
-  time.sleep(0.5)
+  time.sleep(1)
   print("It turns into ants")
-  time.sleep(0.5)
+  time.sleep(1)
   print("The ants bite")
-  time.sleep(0.5)
+  time.sleep(1)
   GEDMG = round(random.uniform(11,22), 1)
   GEDMG *= Pain
   ThugHP -= GEDMG
   print(term.red("-" + str(round(GEDMG, 2))))
-  time.sleep(0.5)
+  time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
   if ThugHP <= 0:
     print("He has HP 0 left")
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     PainCD = 1
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
 
 def Heal():
   global ThugHP
@@ -359,7 +359,7 @@ def Heal():
   time.sleep(2.5)
   if ThugHP > 0:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(1)
+    time.sleep(2)
   else:
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
@@ -372,23 +372,23 @@ def Pain_Sens():
     global Pain
     global PainCD
     print("You punch the enemy")
-    time.sleep(0.5)
-    ThugHP -= 4.5
-    print(term.red("-4.5"))
-    time.sleep(0.5)
+    time.sleep(1)
+    ThugHP -= 7.5
+    print(term.red("-7.5"))
+    time.sleep(1)
     Pain = 1.5
     print("Damage has been increased")
-    time.sleep(0.5)
+    time.sleep(1)
     if PainCD == 0:
      PainCD = 10
     if ThugHP <= 0:
       print("He has HP 0 left")
       print(term.webgreen("You had ", str(round(HP)), "HP left"))
       PainCD = 0 
-      time.sleep(1)
+      time.sleep(2)
     else:
       print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-      time.sleep(1)
+      time.sleep(2)
   else:
     print("You have", str(PainCD) + " moves left")
   
@@ -401,23 +401,23 @@ def Thugshot():
   global RageCount
   shot = random.choice(thugshot)
   print("The thug goes for the kill")
-  time.sleep(0.5)
+  time.sleep(1)
   if shot == 'HeadBonk':
     HP -= 20
     print("The bat hits your head")
-    time.sleep(0.5)
+    time.sleep(1)
     print(term.red("-20"))
-    time.sleep(0.5)
+    time.sleep(1)
     Rage += 0.15
     Rageis2()
     if ability == 'CD':
       print(term.orange("Your rage is ", str(round(Rage, 2))))
     if HP > 0:
       print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
-      time.sleep(0.5)
+      time.sleep(1)
     else:
       print("Y O U  D I E D")
-      time.sleep(1)
+      time.sleep(2)
       sys.exit()
   if shot == 'Hit':
     for a in range(2):
@@ -428,13 +428,13 @@ def Thugshot():
       print(term.red("-" + str(round(ThugDMG, 2))))
       if ability == 'CD':
         print(term.orange("Your rage is ", str(round(Rage, 2))))
-      time.sleep(0.5)
+      time.sleep(1)
     if HP > 0:
       print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
-      time.sleep(0.5)
+      time.sleep(1)
     else:
       print("Y O U  D I E D")
-      time.sleep(1)
+      time.sleep(2)
       sys.exit()
 
 power = ['CD', 'GE', ] 
@@ -442,34 +442,34 @@ power = ['CD', 'GE', ]
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
 print("Not Finished, I just want to make a good game")
 name = input('My name is ')
-print("I,", name + """, have a dream. My dream is to kill bossu. Someone that sells drugs to anyone who pays. Don't do drugs kids. \nOr else you might join the Italian Mafia.""")
+print("I,", name + """, have a dream. My dream is to kill bossu. \nSomeone that sells drugs to anyone who pays. Don't do drugs kids. \nOr else you might join the Italian Mafia.""")
 print("""\nWoah what a weird house, doesn't look like anyone will shoot me with an arrow that looks golden.
 Oh look, I got shot with an arrow that's golden.""")
 ability = random.choice(power)
 if ability == 'CD':
-  print("\nLiterally God himself: You now have the ability to heal or fix anything else but yourself, including objects.")
+  print("\nLiterally God himself: You now have the ability to heal or fix anything else but yourself, including objects.\nThis affects your abilities.")
 elif ability == 'GE':
-  print("\nLiterally God himself: You can now grow organic materials out of inorganic materials and heal yourself.")
+  print("\nLiterally God himself: You can now grow organic materials out of inorganic materials and heal yourself.\nThis affects your abilities.")
 elif ability == 'CUSTOMHEAL':
-  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, the limb that is hit loses function and loses blood \nto that limb and can ricochet until it hits its target. \nYou can also now heal yourself, but after a cooldown for a healing syrum dart.")
+  print("\nLiterally God himself: You can now shoot a venom dart that when it hits, the limb that is hit loses function and loses blood \nto that limb and can ricochet until it hits its target. \nYou can also now heal yourself, but after a cooldown for a healing syrum dart. \nThis affects your abilities.")
 #elif ability == 'SPTW':
-#  print("\nLiterally God himself: You can now stop time for five relative seconds and use it to your advantage with extreme core power.")
+#  print("\nLiterally God himself: You can now stop time for five relative seconds and use it to your advantage with extreme core power.\nThis affects your abilities.")
 #elif ability == 'CUSTOMPOWER':
-#  print("\nLiterally God himself: You can expose others to concentrated and immedeate radiation effects and fine radioactive sand. \nThe radiation can be healed overtime if there is no exposure after 30 seconds.")
+#  print("\nLiterally God himself: You can expose others to concentrated and immedeate radiation effects and fine radioactive sand. \nThe radiation can be healed overtime if there is no exposure after 30 seconds.\nThis affects your abilities.")
 #elif ability == 'CUSTOMPOWER2':
-#  print("\nLiterally God himself: You can now form objects using your imagination that is also limited by the will of your fighting spirit.")
+#  print("\nLiterally God himself: You can now form objects using your imagination that is also limited by the will of your fighting spirit.\nThis affects your abilities.")
 #elif ability == 'LIMBLOSS':
-#  print("\nLiterally God himself: Whenever you touch an opponent's limb, you can control it in any way you want, \nyou can even make their limb lose function and blood.")
+#  print("\nLiterally God himself: Whenever you touch an opponent's limb, you can control it in any way you want, \nyou can even make their limb lose function and blood.\nThis affects your abilities.")
 #elif ability == 'ICEMELT':
-#  print("\nLiterally God himself: The closer opponents are to you, the more your opponents melt until they are dead.")
+#  print("\nLiterally God himself: The closer opponents are to you, the more your opponents melt until they are dead.\nThis affects your abilities.")
 #elif ability == 'MIH':
-#  print("\nLiterally God himself: Travel at almost infinite speed at an infinite acceleration rate. You have limited core power, though.")
+#  print("\nLiterally God himself: Travel at almost infinite speed at an infinite acceleration rate. You have limited core power, though.\nThis affects your abilities.")
 #elif ability == 'CUSTOMSPEED':
-#  print("\nLiterally God himself: Make others travel at a high speed (100mph to 300 mph) uncontrollably if you touch them.")
+#  print("\nLiterally God himself: Make others travel at a high speed (100mph to 300 mph) uncontrollably if you touch them.\nThis affects your abilities.")
 #elif ability == 'CUSTOMSPEED2':
-#  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.")
+#  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.\nThis affects your abilities.")
 #elif ability == 'GERKC':
-#  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.")
+#  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.\nThis affects your abilities.")
 print("\nSo apparently some guy wants to beat you down, because you've been crippled by the arrow. Don't question.")
 if ability == 'CD':
   def CD():
@@ -483,7 +483,7 @@ if ability == 'CD':
         Thugshot()
       if HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Barrage':
       barrage_CD()
@@ -492,7 +492,7 @@ if ability == 'CD':
         Thugshot()
       if HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Double Bearing Shot':
       bearing_shot()
@@ -501,7 +501,7 @@ if ability == 'CD':
         Thugshot()
       if HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Heal?':
       Heal()
@@ -509,7 +509,7 @@ if ability == 'CD':
         Thugshot()
       elif HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     if ThugHP <= 0:
       print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
@@ -524,7 +524,7 @@ elif ability == 'GE':
         Thugshot()
       elif HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Barrage':
       barrage_GE()
@@ -532,7 +532,7 @@ elif ability == 'GE':
         Thugshot()
       elif HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Sand-Ant Spray':
       Sand_Ant_Spray()
@@ -540,7 +540,7 @@ elif ability == 'GE':
         Thugshot()
       elif HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
     elif moves == 'Pain Sensitivity':
       if PainCD == 0:
@@ -551,12 +551,14 @@ elif ability == 'GE':
       else:
         PainCheck()
         print("You have", str(PainCD) + " moves left")
-        time.sleep(1)
+        time.sleep(2)
         GE()
       if HP <= 0:
         print("Y O U  D I E D")
-        time.sleep(1)
+        time.sleep(2)
         sys.exit()
+  if ThugHP <= 0:
+    print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
 elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
