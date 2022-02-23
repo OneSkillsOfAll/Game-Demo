@@ -1,4 +1,3 @@
-from blessed import Terminal
-term = Terminal()
-print(term.green("Joe"))
-print(term.darkgreen("Mama"))
+import random
+a = random.randint(1,10)
+print(a)

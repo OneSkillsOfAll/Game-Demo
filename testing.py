@@ -182,7 +182,7 @@ def Shoot():
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 9:
     Torso = True
-    Shot1DMG *= 1.5
+    Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     print("-" + str(round(Shot1DMG, 1)))
   else:

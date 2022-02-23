@@ -165,7 +165,7 @@ def Shoot():
   ShotChance2 = random.randint(1,10)
   Shot1DMG = round(random.uniform(3, 3.8), 1)
   Shot2DMG = round(random.uniform(3, 3.8), 1)
-  if ShotChance1 == (1, 2):
+  if ShotChance1 == 1 or ShotChance1 == 2:
     #Left Leg
     Shot1DMG *= Venom
     Shot1DMG *= 0.5
@@ -173,7 +173,7 @@ def Shoot():
     Venom += 0.1
     Venomis2()
     print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (3, 4):
+  elif ShotChance1 == 3 or ShotChance1 == 4:
     #Right Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG 
@@ -210,7 +210,7 @@ def Shoot():
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(2)
-  if ShotChance2 == (1, 2):
+  if ShotChance2 == 1 or ShotChance2 == 2:
     #Left Leg
     Shot2DMG *= Venom
     ThugHP -= Shot1DMG
@@ -241,7 +241,7 @@ def Shoot():
   elif ShotChance2 == 9:
     #Torso
     Shot2DMG *= Venom
-    Shot1DMG *= .015
+    Shot1DMG *= 0.15
     ThugHP -= Shot1DMG
     Venom += 0.3
     Venomis2()
@@ -252,7 +252,7 @@ def Shoot():
     print(term.red("Headshot!"))
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(2)
+    time.sleep(1)
 
 def barrage_CD():
   global ThugHP
