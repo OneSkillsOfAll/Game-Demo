@@ -160,7 +160,9 @@ def Shoot():
   global ShotChance1
   global Shot1DMG
   global Shot2DMG
+  global Venom
   ShotChance1 = random.randint(1,10)
+  ShotChance2 = random.randint(1,10)
   Shot1DMG = round(random.uniform(3, 3.8), 1)
   Shot2DMG = round(random.uniform(3, 3.8), 1)
   if ShotChance1 == (1, 2):
@@ -497,7 +499,7 @@ def Thugshot():
       time.sleep(2)
       sys.exit()
 
-power = ['CD', 'GE', ] 
+power = ['CD', 'GE', 'CUSTOMHEAL'] 
 
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
 print("Not Finished, I just want to make a good game")
@@ -622,4 +624,11 @@ elif ability == 'GE':
 elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
-  print("WIP (and nae nae)")
+  while ThugHP > 0:
+    moves = ask('What do you want to do?', ['Shoot'])
+    if moves == 'Shoot':
+      Shoot()
+      if ThugHP > 0:
+        Thugshot()
+  if ThugHP <= 0:
+    print("And then there's thug, he's dead.\n\nDK. THE THUG IS DEAD.")
