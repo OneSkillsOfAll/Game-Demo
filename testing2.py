@@ -1,6 +1,7 @@
 import sys
 import time
 import random
+import climage
 import inquirer
 from blessed import Terminal
 CDHit1 = True
@@ -169,28 +170,28 @@ def Shoot():
     #Left Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 0.8
+    Venom += 1
     Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 3 or ShotChance1 == 4:
     #Right Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG 
-    Venom += 0.8
+    Venom += 1
     Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 5 or ShotChance1 == 6:
     #Left Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 1.2
+    Venom += 1.5
     Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 7 or ShotChance1 == 8:
     #Right Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 1.2
+    Venom += 1.5
     Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 9:
@@ -198,7 +199,7 @@ def Shoot():
     Shot1DMG *= Venom
     Shot1DMG *= 1.5
     ThugHP -= Shot1DMG
-    Venom += 2.4
+    Venom += 3
     Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   else:
@@ -208,50 +209,51 @@ def Shoot():
     print(term.red("Headshot!"))
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
+  time.sleep(0.5)
+  if ShotChance1 != 10:
+    if ShotChance2 == 1 or ShotChance2 == 2:
+      #Left Leg
+      Shot2DMG *= Venom
+      ThugHP -= Shot2DMG
+      Venom += 1
+      Venomis8()
+      print("-" + str(round(Shot2DMG, 1)))
+    elif ShotChance2 == 3 or ShotChance2 == 4:
+      #Right Leg
+      Shot2DMG *= Venom
+      ThugHP -= Shot2DMG 
+      Venom += 1
+      Venomis8()
+      print("-" + str(round(Shot2DMG, 1)))
+    elif ShotChance2 == 5 or ShotChance2 == 6:
+      #Left Arm
+      Shot2DMG *= Venom
+      ThugHP -= Shot2DMG
+      Venom += 1.5
+      Venomis8()
+      print("-" + str(round(Shot2DMG, 1)))
+    elif ShotChance2 == 7 or ShotChance2 == 8:
+      #Right Arm
+      Shot2DMG *= Venom
+      ThugHP -= Shot2DMG
+      Venom += 1.5
+      Venomis8()
+      print("-" + str(round(Shot2DMG, 1)))
+    elif ShotChance2 == 9:
+      #Torso
+      Shot2DMG *= Venom
+      Shot2DMG *= 1.5
+      ThugHP -= Shot2DMG
+      Venom += 3
+      Venomis8()
+      print("-" + str(round(Shot1DMG, 1)))
+    else:
+      #Head
+      ThugHP = 0
+      print(term.red("Headshot!"))
+      print(term.yellow("He has 0 HP left"))
+      print(term.webgreen("You had ", str(round(HP)), "HP left"))
   time.sleep(1)
-  if ShotChance2 == 1 or ShotChance2 == 2:
-    #Left Leg
-    Shot2DMG *= Venom
-    ThugHP -= Shot2DMG
-    Venom += 0.8
-    Venomis8()
-    print("-" + str(round(Shot2DMG, 1)))
-  elif ShotChance2 == 3 or ShotChance2 == 4:
-    #Right Leg
-    Shot2DMG *= Venom
-    ThugHP -= Shot2DMG 
-    Venom += 0.8
-    Venomis8()
-    print("-" + str(round(Shot2DMG, 1)))
-  elif ShotChance2 == 5 or ShotChance2 == 6:
-    #Left Arm
-    Shot2DMG *= Venom
-    ThugHP -= Shot2DMG
-    Venom += 1.2
-    Venomis8()
-    print("-" + str(round(Shot2DMG, 1)))
-  elif ShotChance2 == 7 or ShotChance2 == 8:
-    #Right Arm
-    Shot2DMG *= Venom
-    ThugHP -= Shot2DMG
-    Venom += 1.2
-    Venomis8()
-    print("-" + str(round(Shot2DMG, 1)))
-  elif ShotChance2 == 9:
-    #Torso
-    Shot2DMG *= Venom
-    Shot2DMG *= 1.5
-    ThugHP -= Shot2DMG
-    Venom += 2.4
-    Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
-  else:
-    #Head
-    ThugHP = 0
-    print(term.red("Headshot!"))
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(1)
   if ThugHP > 0:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
