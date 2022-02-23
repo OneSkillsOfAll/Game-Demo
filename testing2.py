@@ -224,7 +224,7 @@ def Shoot():
     Venom += 0.1
     Venomis2()
     print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance2 == 5 or ShotChance == 6:
+  elif ShotChance2 == 5 or ShotChance2 == 6:
     #Left Arm
     Shot2DMG *= Venom
     ThugHP -= Shot1DMG
