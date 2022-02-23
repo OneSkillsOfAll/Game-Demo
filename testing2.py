@@ -55,7 +55,7 @@ def Rageis2():
   if Rage >= 2:
     Rage = 2
 
-def Venomis2():
+def Venomis8():
   global Venom
   if Venom >= 2:
     Venom = 2
@@ -168,31 +168,30 @@ def Shoot():
   if ShotChance1 == 1 or ShotChance1 == 2:
     #Left Leg
     Shot1DMG *= Venom
-    Shot1DMG *= 0.5
     ThugHP -= Shot1DMG
     Venom += 0.1
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 3 or ShotChance1 == 4:
     #Right Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG 
     Venom += 0.1
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 5 or ShotChance1 == 6:
     #Left Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     Venom += 0.15
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 7 or ShotChance1 == 8:
     #Right Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     Venom += 0.15
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   elif ShotChance1 == 9:
     #Torso
@@ -200,7 +199,7 @@ def Shoot():
     Shot1DMG *= .015
     ThugHP -= Shot1DMG
     Venom += 0.3
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   else:
     #Head
@@ -215,28 +214,28 @@ def Shoot():
     Shot2DMG *= Venom
     ThugHP -= Shot2DMG
     Venom += 0.1
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot2DMG, 1)))
   elif ShotChance2 == 3 or ShotChance2 == 4:
     #Right Leg
     Shot2DMG *= Venom
     ThugHP -= Shot2DMG 
     Venom += 0.1
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot2DMG, 1)))
   elif ShotChance2 == 5 or ShotChance2 == 6:
     #Left Arm
     Shot2DMG *= Venom
     ThugHP -= Shot2DMG
     Venom += 0.15
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot2DMG, 1)))
   elif ShotChance2 == 7 or ShotChance2 == 8:
     #Right Arm
     Shot2DMG *= Venom
     ThugHP -= Shot2DMG
     Venom += 0.15
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot2DMG, 1)))
   elif ShotChance2 == 9:
     #Torso
@@ -244,7 +243,7 @@ def Shoot():
     Shot2DMG *= 1.5
     ThugHP -= Shot2DMG
     Venom += 0.3
-    Venomis2()
+    Venomis8()
     print("-" + str(round(Shot1DMG, 1)))
   else:
     #Head
