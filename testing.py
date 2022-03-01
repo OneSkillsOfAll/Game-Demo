@@ -51,6 +51,7 @@ def RageUse():
     CDDMG2 *= 1
     CDBarrageDMG *= 2
     Rage = 1
+    RageCD = 5
   elif Rage >= 2 and RageCD != 1:
     CDHit1 *= 1
     CDHit2 *= 1
