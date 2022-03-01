@@ -109,8 +109,6 @@ def punch_combo_CD():
   time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
-  if Rage >= 2 and RageCD <= 2 and CDHit1 >= 10 or CDHit2 >= 10 or CDHit3 >= 10:
-    RageCD -= 1
   if ThugHP <= 0:
     Rage = 1
     print(term.yellow("He has 0 HP left"))
@@ -483,7 +481,6 @@ if ability == 'CD':
     moves = ask('What do you want to do?', ['Punch Combo', 'Barrage', 'Double Bearing Shot', 'Heal?'])
     if moves == 'Punch Combo':
       punch_combo_CD()
-      RageUse()
       if ThugHP > 0:
         Thugshot()
       if HP <= 0:
@@ -492,7 +489,6 @@ if ability == 'CD':
         sys.exit()
     elif moves == 'Barrage':
       barrage_CD()
-      RageUse()
       if ThugHP > 0:
         Thugshot()
       if HP <= 0:
@@ -501,7 +497,6 @@ if ability == 'CD':
         sys.exit()
     elif moves == 'Double Bearing Shot':
       bearing_shot()
-      RageUse()
       if ThugHP > 0:
         Thugshot()
       if HP <= 0:
