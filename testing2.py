@@ -59,8 +59,8 @@ def Rageis2():
 
 def Venomis8():
   global Venom
-  if Venom >= 2:
-    Venom = 2
+  if Venom >= 8:
+    Venom = 8
 
 def PainCheck():
   global PainCD
@@ -172,28 +172,28 @@ def Shoot():
     #Left Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 1
+    Venom += 0.5
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 5 or ShotChance1 == 6 or ShotChance1 == 7 or ShotChance1 == 8:
     #Right Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG 
-    Venom += 1
+    Venom += 0.5
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 9 or ShotChance1 == 10 or ShotChance1 == 11 or ShotChance1 == 12:
     #Left Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 1.5
+    Venom += 0.75
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 13 or ShotChance1 == 14 or ShotChance1 == 15 or ShotChance1 == 16:
     #Right Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
-    Venom += 1.5
+    Venom += 0.75
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 17 or ShotChance1 == 18 or ShotChance1 == 19:
@@ -201,7 +201,7 @@ def Shoot():
     Shot1DMG *= Venom
     Shot1DMG *= 1.5
     ThugHP -= Shot1DMG
-    Venom += 3
+    Venom += 1.5
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
   else:
@@ -212,33 +212,33 @@ def Shoot():
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
   time.sleep(0.5)
-  if ShotChance1 != 10:
+  if ShotChance1 != 20:
     if ShotChance2 == 1 or ShotChance2 == 2 or ShotChance2 == 3 or ShotChance2 == 4:
       #Left Leg
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG
-      Venom += 1
+      Venom += 0.5
       Venomis8()
       print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 5 or ShotChance2 == 6 or ShotChance2 == 7 or ShotChance2 == 8:
       #Right Leg
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG 
-      Venom += 1
+      Venom += 0.5
       Venomis8()
       print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 9 or ShotChance2 == 10 or ShotChance2 == 11 or ShotChance2 == 12:
       #Left Arm
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG
-      Venom += 1.5
+      Venom += 0.75
       Venomis8()
       print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 13 or ShotChance2 == 14 or ShotChance2 == 15 or ShotChance2 == 16:
       #Right Arm
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG
-      Venom += 1.5
+      Venom += 0.75
       Venomis8()
       print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 17 or ShotChance2 == 18 or ShotChance2 == 19:
@@ -246,7 +246,7 @@ def Shoot():
       Shot2DMG *= Venom
       Shot2DMG *= 1.5
       ThugHP -= Shot2DMG
-      Venom += 3
+      Venom += 1.5
       Venomis8()
       print(term.red("-" + str(round(Shot2DMG, 1))))
     else:
