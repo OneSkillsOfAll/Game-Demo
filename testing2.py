@@ -503,7 +503,7 @@ def Thugshot():
       time.sleep(2)
       sys.exit()
 
-power = ['CD', 'GE', 'CUSTOMHEAL'] 
+power = ['CUSTOMHEAL'] 
 
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
 print("Not Finished, I just want to make a good game")
