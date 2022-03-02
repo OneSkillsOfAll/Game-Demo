@@ -159,6 +159,7 @@ def punch_combo_GE():
 def Shoot():
   global ThugHP
   global ShotChance1
+  global ShotChance2
   global Shot1DMG
   global Shot2DMG
   global Venom
@@ -172,28 +173,28 @@ def Shoot():
     ThugHP -= Shot1DMG
     Venom += 1
     Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
+    print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 3 or ShotChance1 == 4:
     #Right Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG 
     Venom += 1
     Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
+    print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 5 or ShotChance1 == 6:
     #Left Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     Venom += 1.5
     Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
+    print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 7 or ShotChance1 == 8:
     #Right Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     Venom += 1.5
     Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
+    print(term.red("-" + str(round(Shot1DMG, 1))))
   elif ShotChance1 == 9:
     #Torso
     Shot1DMG *= Venom
@@ -201,7 +202,7 @@ def Shoot():
     ThugHP -= Shot1DMG
     Venom += 3
     Venomis8()
-    print("-" + str(round(Shot1DMG, 1)))
+    print(term.red("-" + str(round(Shot1DMG, 1))))
   else:
     #Head
     Shot1DMG *= Venom
@@ -217,28 +218,28 @@ def Shoot():
       ThugHP -= Shot2DMG
       Venom += 1
       Venomis8()
-      print("-" + str(round(Shot2DMG, 1)))
+      print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 3 or ShotChance2 == 4:
       #Right Leg
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG 
       Venom += 1
       Venomis8()
-      print("-" + str(round(Shot2DMG, 1)))
+      print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 5 or ShotChance2 == 6:
       #Left Arm
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG
       Venom += 1.5
       Venomis8()
-      print("-" + str(round(Shot2DMG, 1)))
+      print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 7 or ShotChance2 == 8:
       #Right Arm
       Shot2DMG *= Venom
       ThugHP -= Shot2DMG
       Venom += 1.5
       Venomis8()
-      print("-" + str(round(Shot2DMG, 1)))
+      print(term.red("-" + str(round(Shot2DMG, 1))))
     elif ShotChance2 == 9:
       #Torso
       Shot2DMG *= Venom
@@ -246,7 +247,7 @@ def Shoot():
       ThugHP -= Shot2DMG
       Venom += 3
       Venomis8()
-      print("-" + str(round(Shot1DMG, 1)))
+      print(term.red("-" + str(round(Shot2DMG, 1))))
     else:
       #Head
       ThugHP = 0
