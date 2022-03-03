@@ -182,7 +182,7 @@ def Shoot():
     Venom += 0.375
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
-  elif ShotChance1 == 17 or ShotChance1 == 18 or ShotChance1 == 19:
+  elif ShotChance1 >= 17 and ShotChance1 <= 19:
     #Torso
     Shot1DMG *= Venom
     Shot1DMG *= 1.5
