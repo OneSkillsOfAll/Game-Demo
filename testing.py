@@ -132,79 +132,6 @@ def punch_combo_CD():
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   time.sleep(1)
 
-def punch_combo_GE():
-  global HP
-  global ThugHP
-  global GEHit1
-  global GEHit2
-  global GEHit3
-  global PainCD
-  if PainCD < 10:
-    Pain = 1
-  else:
-    Pain = 1.5
-  GEHit1 = round(random.uniform(5, 8), 1)
-  GEHit2 = round(random.uniform(5, 8), 1)
-  GEHit3 = round(random.uniform(5, 8), 1)
-  GEHit1 *= Pain
-  ThugHP -= GEHit1
-  print(term.red("-" + str(round(GEHit1, 1))))
-  time.sleep(0.5)
-  GEHit2 *= Pain
-  ThugHP -= GEHit2
-  print(term.red("-" + str(round(GEHit2, 1))))
-  time.sleep(0.5)
-  GEHit3 *= Pain
-  ThugHP -= GEHit3
-  print(term.red("-" + str(round(GEHit3, 1))))
-  time.sleep(0.5)
-  if PainCD > 0:
-   PainCD -= 1
-  if ThugHP <= 0:
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    PainCD = 0
-    time.sleep(2)
-  else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
-
-def Shoot():
-  global ThugHP
-  global ShotChance1
-  global Shot1DMG
-  global Shot2DMG
-  ShotChance1 = random.randint(1,10)
-  Shot1DMG = round(random.uniform(3, 3.8), 1)
-  Shot2DMG = round(random.uniform(3, 3.8), 1)
-  if ShotChance1 == (1, 2):
-    LeftLeg = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (3, 4):
-    RightLeg = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (5, 6):
-    LeftArm = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (7, 8):
-    RightArm = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == 9:
-    Torso = True
-    Shot1DMG *= Venom
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  else:
-    Head = True
-    ThugHP = 0
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(2)
-
 def barrage_CD():
   global ThugHP
   global Rage
@@ -248,38 +175,6 @@ def barrage_CD():
     RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
-
-def barrage_GE():
-  global ThugHP
-  global PainCD
-  if PainCD < 10:
-    Pain = 1
-  else:
-    Pain = 1.5
-  for a in range (20):
-    GEBarrageDMG = round(random.uniform(0.5, 1.25), 2)
-    GEBarrageDMG *= Pain
-    ThugHP -= GEBarrageDMG
-    print(term.red("-" + str(round(GEBarrageDMG, 3))))
-    time.sleep(0.1)
-  time.sleep(1)
-  if Pain == 1:
-    ThugHP -= 3.75
-    print(term.red("-3.75"))
-  elif Pain == 1.5:
-    ThugHP -= 5.5
-    print(term.red("-5.5"))
-  time.sleep(1)
-  if PainCD > 0:
-    PainCD -= 1
-  if ThugHP <= 0:
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    PainCD = 1
-    time.sleep(2)
-  else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
 
 def bearing_shot():
   global ThugHP
@@ -335,6 +230,87 @@ def bearing_shot():
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 
+def Heal():
+  global ThugHP
+  ThugHP = 100
+  print("Dude, do you are have the stupid?\nYou just healed the thug back to 100 HP.")
+  time.sleep(2.5)
+  if ThugHP > 0:
+    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
+    time.sleep(2)
+  else:
+    print(term.yellow("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
+
+def punch_combo_GE():
+  global HP
+  global ThugHP
+  global GEHit1
+  global GEHit2
+  global GEHit3
+  global PainCD
+  if PainCD < 10:
+    Pain = 1
+  else:
+    Pain = 1.5
+  GEHit1 = round(random.uniform(5, 8), 1)
+  GEHit2 = round(random.uniform(5, 8), 1)
+  GEHit3 = round(random.uniform(5, 8), 1)
+  GEHit1 *= Pain
+  ThugHP -= GEHit1
+  print(term.red("-" + str(round(GEHit1, 1))))
+  time.sleep(0.5)
+  GEHit2 *= Pain
+  ThugHP -= GEHit2
+  print(term.red("-" + str(round(GEHit2, 1))))
+  time.sleep(0.5)
+  GEHit3 *= Pain
+  ThugHP -= GEHit3
+  print(term.red("-" + str(round(GEHit3, 1))))
+  time.sleep(0.5)
+  if PainCD > 0:
+   PainCD -= 1
+  if ThugHP <= 0:
+    print(term.yellow("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
+    PainCD = 0
+    time.sleep(2)
+  else:
+    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
+    time.sleep(2)
+
+def barrage_GE():
+  global ThugHP
+  global PainCD
+  if PainCD < 10:
+    Pain = 1
+  else:
+    Pain = 1.5
+  for a in range (20):
+    GEBarrageDMG = round(random.uniform(0.5, 1.25), 2)
+    GEBarrageDMG *= Pain
+    ThugHP -= GEBarrageDMG
+    print(term.red("-" + str(round(GEBarrageDMG, 3))))
+    time.sleep(0.1)
+  time.sleep(1)
+  if Pain == 1:
+    ThugHP -= 3.75
+    print(term.red("-3.75"))
+  elif Pain == 1.5:
+    ThugHP -= 5.5
+    print(term.red("-5.5"))
+  time.sleep(1)
+  if PainCD > 0:
+    PainCD -= 1
+  if ThugHP <= 0:
+    print(term.yellow("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
+    PainCD = 1
+    time.sleep(2)
+  else:
+    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
+    time.sleep(2)
+
 def Sand_Ant_Spray():
   global ThugHP
   global DMG
@@ -365,18 +341,6 @@ def Sand_Ant_Spray():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
 
-def Heal():
-  global ThugHP
-  ThugHP = 100
-  print("Dude, do you are have the stupid?\nYou just healed the thug back to 100 HP.")
-  time.sleep(2.5)
-  if ThugHP > 0:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
-  else:
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-
 def Pain_Sens():
   if PainCheck() == True:
     global ThugHP
@@ -404,7 +368,43 @@ def Pain_Sens():
       time.sleep(2)
   else:
     print("You have", str(PainCD) + " moves left")
-  
+
+def Shoot():
+  global ThugHP
+  global ShotChance1
+  global Shot1DMG
+  global Shot2DMG
+  ShotChance1 = random.randint(1,10)
+  Shot1DMG = round(random.uniform(3, 3.8), 1)
+  Shot2DMG = round(random.uniform(3, 3.8), 1)
+  if ShotChance1 == (1, 2):
+    LeftLeg = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (3, 4):
+    RightLeg = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (5, 6):
+    LeftArm = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == (7, 8):
+    RightArm = True
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  elif ShotChance1 == 9:
+    Torso = True
+    Shot1DMG *= Venom
+    ThugHP -= Shot1DMG
+    print("-" + str(round(Shot1DMG, 1)))
+  else:
+    Head = True
+    ThugHP = 0
+    print(term.yellow("He has 0 HP left"))
+    print(term.webgreen("You had ", str(round(HP)), "HP left"))
+    time.sleep(2)
+
 thugshot = ['HeadBonk', 'Hit']
 
 def Thugshot():
