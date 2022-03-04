@@ -56,7 +56,7 @@ def RageUse():
     CDHit2 *= 1.5
     CDHit3 *= 1.5
     CDDMG *= 2
-    CDDMG2 *= 1
+    CDDMG2 *= 2
     CDBarrageDMG *= 2
     Rage = 1
     RageCD = 5
@@ -186,11 +186,12 @@ def bearing_shot():
   global CDDMG
   global CDDMG2
   print("The bullet fires!")
+  CDDMG = round(random.uniform(7, 14), 2)
+  CDDMG2 = round(random.uniform(3.75, 14), 2)
   time.sleep(0.5)
   RageUse()
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
-    CDDMG = round(random.uniform(7, 14), 2)
     if Rage < 2 and RageCD >= 2:
       CDDMG *= 1
       Rage += 0.075
@@ -205,7 +206,6 @@ def bearing_shot():
   time.sleep(1)
   print("The bullet comes back!")
   time.sleep(1)
-  CDDMG2 = round(random.uniform(3.75, 14), 2)
   if Rage < 2 and RageCD > 2:
     CDDMG2 *= 1
   elif Rage >= 2 and RageCD <= 2:
@@ -216,7 +216,6 @@ def bearing_shot():
   Rageis2()
   print(term.red("-" + str(round(CDDMG2, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
-  RageUse()
   time.sleep(1)
   if ThugHP <= 0:
     Rage = 1
