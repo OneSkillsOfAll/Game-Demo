@@ -1,6 +1,3 @@
-values = []
-
-for i in range(5):
-    values.append(int(input("Next number: ")))
-
-print(values)
+for i in range(len(values)):
+    if (values[i] < 0):
+        values[i] = values [i] * -1

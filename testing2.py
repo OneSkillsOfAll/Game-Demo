@@ -384,14 +384,14 @@ def Shoot():
   ShotChance2 = random.randint(1,20)
   Shot1DMG = round(random.uniform(3, 3.8), 1)
   Shot2DMG = round(random.uniform(3, 3.8), 1)
-  if ShotChance2 >= 1 and ShotChance2 <= 8:
+  if ShotChance1 >= 1 and ShotChance1 <= 8:
     #Left Leg
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
     Venom += 0.25
     Venomis8()
     print(term.red("-" + str(round(Shot1DMG, 1))))
-  elif ShotChance2 >= 9 and ShotChance2 <= 16:
+  elif ShotChance1 >= 9 and ShotChance1 <= 16:
     #Left Arm
     Shot1DMG *= Venom
     ThugHP -= Shot1DMG
