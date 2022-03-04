@@ -420,7 +420,7 @@ def Thugshot():
 power = ['CD', 'GE', ] 
 
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GER'
-print("Not Finished, I just want to make a good game")
+print("Not Finished, I just want to make a good game. Use the up and down keys to select attacks.")
 name = input('My name is ')
 print("I,", name + """, have a dream. My dream is to kill bossu. \nSomeone that sells drugs to anyone who pays. Don't do drugs kids. \nOr else you might join the Italian Mafia.""")
 print("""\nWoah what a weird house, doesn't look like anyone will shoot me with an arrow that looks golden.
