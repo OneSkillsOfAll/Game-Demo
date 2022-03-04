@@ -118,6 +118,8 @@ def punch_combo_CD():
   time.sleep(0.5)
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(0.5)
+  if Rage >= 2 and RageCD <= 2 and CDHit1 >= 10 or CDHit2 >= 10 or CDHit3 >= 10:
+    RageCD -= 1
   if ThugHP <= 0:
     Rage = 1
     print(term.yellow("He has 0 HP left"))
@@ -127,7 +129,7 @@ def punch_combo_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 5
+    RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   time.sleep(1)
@@ -172,7 +174,7 @@ def barrage_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 5
+    RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 
@@ -210,7 +212,7 @@ def bearing_shot():
     CDDMG2 *= 2
     RageCD -= 1
   ThugHP -= round(CDDMG2, 2)
-  Rage += 0.1
+  Rage += 0.8
   Rageis2()
   print(term.red("-" + str(round(CDDMG2, 2))))
   print(term.orange("Your rage is ", str(round(Rage, 2))))
@@ -226,7 +228,7 @@ def bearing_shot():
     time.sleep(2)
   time.sleep(1)
   if RageCD <= 0:
-    RageCD = 5
+    RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 

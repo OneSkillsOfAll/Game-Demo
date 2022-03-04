@@ -32,7 +32,6 @@ def RageUse():
   global CDDMG
   global CDDMG2
   global CDBarrageDMG
-  global RageCount
   if Rage < 2 and RageCD > 1:
     CDHit1 *= 1
     CDHit2 *= 1
@@ -40,17 +39,34 @@ def RageUse():
     CDDMG *= 1
     CDDMG2 *= 1
     CDBarrageDMG *= 1
-  elif Rage >= 2 and RageCD > 0:
+  if Rage < 2 and RageCD > 1:
+    CDHit1 *= 1
+    CDHit2 *= 1
+    CDHit3 *= 1
+    CDDMG *= 1
+    CDDMG2 *= 1
+    CDBarrageDMG *= 1
+    RageCD -= 1
+  elif Rage >= 2 and RageCD == 1:
     Rage = 2
-    CDHit1 *= 2
-    CDHit2 *= 2
-    CDHit3 *= 2
+    CDHit1 *= 1.5
+    CDHit2 *= 1.5
+    CDHit3 *= 1.5
     CDDMG *= 2
     CDDMG2 *= 1
     CDBarrageDMG *= 2
+    Rage = 1
+    RageCD = 5
+  elif Rage >= 2 and RageCD != 1:
+    CDHit1 *= 1
+    CDHit2 *= 1
+    CDHit3 *= 1
+    CDDMG *= 1
+    CDDMG2 *= 1
+    CDBarrageDMG *= 1
   elif Rage >= 2 and RageCD <= 0:
     Rage = 1
-    RageCD = 10
+    RageCD = 5
 
 def Rageis2():
   global Rage
