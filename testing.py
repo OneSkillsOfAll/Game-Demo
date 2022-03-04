@@ -371,42 +371,6 @@ def Pain_Sens():
   else:
     print("You have", str(PainCD) + " moves left")
 
-def Shoot():
-  global ThugHP
-  global ShotChance1
-  global Shot1DMG
-  global Shot2DMG
-  ShotChance1 = random.randint(1,10)
-  Shot1DMG = round(random.uniform(3, 3.8), 1)
-  Shot2DMG = round(random.uniform(3, 3.8), 1)
-  if ShotChance1 == (1, 2):
-    LeftLeg = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (3, 4):
-    RightLeg = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (5, 6):
-    LeftArm = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == (7, 8):
-    RightArm = True
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  elif ShotChance1 == 9:
-    Torso = True
-    Shot1DMG *= Venom
-    ThugHP -= Shot1DMG
-    print("-" + str(round(Shot1DMG, 1)))
-  else:
-    Head = True
-    ThugHP = 0
-    print(term.yellow("He has 0 HP left"))
-    print(term.webgreen("You had ", str(round(HP)), "HP left"))
-    time.sleep(2)
-
 thugshot = ['HeadBonk', 'Hit']
 
 def Thugshot():
