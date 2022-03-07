@@ -371,7 +371,8 @@ def Pain_Sens():
       print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
       time.sleep(2)
   else:
-    print("You have", str(PainCD) + " moves left")
+    print("You have", str(PainCD) + """ moves left
+    """)
 
 thugshot = ['HeadBonk', 'Hit']
 
@@ -550,7 +551,8 @@ elif ability == 'GE':
           Thugshot()
       else:
         PainCheck()
-        print("You have", str(PainCD) + " moves left")
+        print("You have", str(PainCD) + """ moves left
+        """)
         time.sleep(2)
         GE()
       if HP <= 0:
