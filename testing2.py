@@ -455,7 +455,7 @@ def Shotty():
   Hits1 = random.uniform(5,15)
   Hits2 = random.uniform(5,15)
   for one in Hits1:
-    D
+    DMG = addthis
 
 thugshot = ['HeadBonk', 'Hit']
 
