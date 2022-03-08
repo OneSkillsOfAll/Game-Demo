@@ -3,25 +3,19 @@ import time
 import random
 import inquirer
 from blessed import Terminal
-LeftArm = False
-RightArm = False
-LeftLeg = False
-RightLeg = False
-Torso = False
-Head = False
 CDHit1 = True
 CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
 CDDMG = True
 CDDMG2 = True
-Pain = True
+Rage = 1
+Pain = 1
 RageCD = 1
 PainCD = 1
 HP = 100
 ThugHP = 100
 Melt = 0
-Rage = 1
 PainSens = 1
 
 term = Terminal()
