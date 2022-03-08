@@ -7,8 +7,8 @@ CDHit1 = True
 CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
-CDDMG = True
-CDDMG2 = True
+DMG = True
+DMG2 = True
 Rage = 1
 Pain = 1
 RageCD = 1
@@ -26,30 +26,30 @@ def RageAmp():
   global CDHit1
   global CDHit2
   global CDHit3
-  global CDDMG
-  global CDDMG2
+  global DMG
+  global DMG2
   global CDBarrageDMG
   if Rage < 2 and RageCD > 1:
     CDHit1 *= 1
     CDHit2 *= 1
     CDHit3 *= 1
-    CDDMG *= 1
-    CDDMG2 *= 1
+    DMG *= 1
+    DMG2 *= 1
     CDBarrageDMG *= 1
     RageCD -= 1
   elif Rage < 2 and RageCD == 1:
     CDHit1 *= 1
     CDHit2 *= 1
     CDHit3 *= 1
-    CDDMG *= 1
-    CDDMG2 *= 1
+    DMG *= 1
+    DMG2 *= 1
     CDBarrageDMG *= 1
   elif Rage >= 2 and RageCD != 1:
     CDHit1 *= 1
     CDHit2 *= 1
     CDHit3 *= 1
-    CDDMG *= 1
-    CDDMG2 *= 1
+    DMG *= 1
+    DMG2 *= 1
     CDBarrageDMG *= 1
     Rage = 2
   elif Rage >= 2 and RageCD <= 1:
@@ -57,8 +57,8 @@ def RageAmp():
     CDHit1 *= 1.5
     CDHit2 *= 1.5
     CDHit3 *= 1.5
-    CDDMG *= 2
-    CDDMG2 *= 2
+    DMG *= 2
+    DMG2 *= 2
     CDBarrageDMG *= 2
     Rage = 2
     RageCD -= 1
@@ -188,27 +188,27 @@ def bearing_shot():
   global Rage
   global RageCD
   global BulletOdds
-  global CDDMG
-  global CDDMG2
+  global DMG
+  global DMG2
   print("The bullet fires!")
-  CDDMG = round(random.uniform(7, 14), 2)
-  CDDMG2 = round(random.uniform(3.75, 14), 2)
+  DMG = round(random.uniform(7, 14), 2)
+  DMG2 = round(random.uniform(3.75, 14), 2)
   RageAmp()
   time.sleep(0.5)
   BulletOdds = random.randint(1,3)
   if BulletOdds != 3:
     Rage += 0.075
     Rageis2()
-    ThugHP -= round(CDDMG, 2)
-    print(term.red("-" + str(round(CDDMG, 2))))
+    ThugHP -= round(DMG, 2)
+    print(term.red("-" + str(round(DMG, 2))))
     print(term.orange("Your rage is ", str(round(Rage, 2))))
   else:
     print("The bullet missed!")
   time.sleep(1)
   print("The bullet comes back!")
   time.sleep(1)
-  ThugHP -= round(CDDMG2, 2)
-  print(term.red("-" + str(round(CDDMG2, 2))))
+  ThugHP -= round(DMG2, 2)
+  print(term.red("-" + str(round(DMG2, 2))))
   Rage += 0.8
   Rageis2()
   RageCheck()
