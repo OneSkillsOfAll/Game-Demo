@@ -461,14 +461,14 @@ def Shotty():
   DMG *= Venom
   DMG2 *= Venom
   for one in range(Hits1):
-    DMG = round(random.uniform(0.15,0.3), 2)
+    DMG = round(random.uniform(0.2,0.35), 2)
     print(term.red("-" + str(round(DMG, 2))))
     ThugHP -= DMG
   Venom += 0.5
   time.sleep(0.5)
   print("")
   for two in range(Hits2):
-    DMG2 = round(random.uniform(0.15,0.3), 2)
+    DMG2 = round(random.uniform(0.2,0.35), 2)
     print(term.red("-" + str(round(DMG2, 2))))
     ThugHP -= DMG2
   Venom += 0.5
