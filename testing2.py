@@ -451,6 +451,7 @@ def Shoot():
     time.sleep(2)
 
 def Shotty():
+  #The needles have Raibes
   global Venom
   global DMG
   global DMG2
@@ -465,7 +466,7 @@ def Shotty():
     ThugHP -= DMG
   Venom += 0.5
   time.sleep(0.5)
-  print("\n")
+  print("")
   for two in range(Hits2):
     DMG2 = round(random.uniform(0.15,0.3), 2)
     print(term.red("-" + str(round(DMG2, 2))))
