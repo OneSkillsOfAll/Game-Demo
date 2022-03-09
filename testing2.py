@@ -452,10 +452,28 @@ def Shoot():
 
 def Shotty():
   global Venom
-  Hits1 = random.uniform(5,15)
-  Hits2 = random.uniform(5,15)
-  for one in Hits1:
-    DMG = addthis
+  global DMG
+  global DMG2
+  global ThugHP
+  Hits1 = random.randint(5,15)
+  Hits2 = random.randint(5,15)
+  DMG *= Venom
+  DMG2 *= Venom
+  for one in range(Hits1):
+    DMG = round(random.uniform(0.15,0.3), 2)
+    print(term.red("-" + str(round(DMG, 2))))
+    ThugHP -= DMG
+  Venom += 0.5
+  time.sleep(0.5)
+  print("\n")
+  for two in range(Hits2):
+    DMG2 = round(random.uniform(0.15,0.3), 2)
+    print(term.red("-" + str(round(DMG2, 2))))
+    ThugHP -= DMG2
+  Venom += 0.5
+  if ThugHP > 0:
+    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
+    time.sleep(2)
 
 thugshot = ['HeadBonk', 'Hit']
 
@@ -628,9 +646,13 @@ elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
   while ThugHP > 0:
-    moves = ask('What do you want to do?', ['Shoot'])
+    moves = ask('What do you want to do?', ['Shoot', 'Needle Shotty'])
     if moves == 'Shoot':
       Shoot()
+      if ThugHP > 0:
+        Thugshot()
+    elif moves == 'Needle Shotty':
+      Shotty()
       if ThugHP > 0:
         Thugshot()
   if ThugHP <= 0:
