@@ -476,6 +476,12 @@ def Shotty():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
 
+def Gas():
+  global DMG
+  global ThugHP
+  DMG = random.uniform(3, 10)
+  print("among us")
+
 thugshot = ['HeadBonk', 'Hit']
 
 def Thugshot():
@@ -523,7 +529,7 @@ def Thugshot():
 
 power = ['CUSTOMHEAL'] 
 
-#'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GERKC'
+#'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GER'
 print("Not Finished, I just want to make a good game")
 name = input('My name is ')
 print("I,", name + """, have a dream. My dream is to kill bossu. \nSomeone that sells drugs to anyone who pays. Don't do drugs kids. \nOr else you might join the Italian Mafia.""")
@@ -552,8 +558,8 @@ elif ability == 'CUSTOMHEAL':
 #  print("\nLiterally God himself: Make others travel at a high speed (100mph to 300 mph) uncontrollably if you touch them.\nThis affects your abilities.")
 #elif ability == 'CUSTOMSPEED2':
 #  print("\nLiterally God himself: You can only control objects near you to travel at the speed of a bullet to your opponent.\nThis affects your abilities.")
-#elif ability == 'GERKC':
-#  print("\nLiterally God himself: You can revert time by at most 24 hours and skip time by at most 10 minutes.\nThis affects your abilities.")
+#elif ability == 'GER':
+#  print("\nLiterally God himself: You can revert time with high strength. \nThis affects your abilities.")
 print("\nSo apparently some guy wants to beat you down, because you've been crippled by the arrow. Don't question.")
 if ability == 'CD':
   def CD():
