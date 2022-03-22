@@ -10,6 +10,7 @@ CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
 DMG = True
+GEDMG = True
 DMG2 = True
 HP = 100
 ThugHP = 100
@@ -18,6 +19,7 @@ Pain = 1
 Venom = 1
 RageCD = 2
 PainCD = 0
+GasCD = 0
 
 term = Terminal()
 
@@ -79,20 +81,33 @@ def Rageis2():
   global Rage
   if Rage >= 2:
     Rage = 2
+  else:
+    pass
 
 def Venomis8():
   global Venom
   if Venom >= 8:
     Venom = 8
+  else:
+    pass
+
+def GasCheck():
+  global GasCD
+  if GasCD == 0:
+    GasCD = 0
+  elif GasCD > 0:
+    GasCD -= 1
+  else:
+    pass
 
 def PainCheck():
   global PainCD
   if PainCD == 0:
-    return True
-    PainCD = 0
-  if PainCD > 0:
-    return False
+    PainCD = 10
+  elif PainCD > 0:
     PainCD -= 1
+  else:
+    pass
 
 def ask(message, choices):
   global HP
@@ -141,6 +156,8 @@ def punch_combo_CD():
     RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  else:
+    pass
   time.sleep(1)
 
 def barrage_CD():
@@ -169,6 +186,8 @@ def barrage_CD():
     Rage += 0.04
     print(term.red("-7.5"))
     RageCD -= 1
+  else:
+    pass
   Rage += 0.3
   Rageis2()
   time.sleep(1)
@@ -187,6 +206,8 @@ def barrage_CD():
     RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  else:
+    pass
 
 def bearing_shot():
   global ThugHP
@@ -204,8 +225,8 @@ def bearing_shot():
   if BulletOdds != 3:
     Rage += 0.075
     Rageis2()
-    ThugHP -= round(DMG, 2)
-    print(term.red("-" + str(round(DMG, 2))))
+    ThugHP -= round(DMG, 1)
+    print(term.red("-" + str(round(DMG, 1))))
     print(term.orange("Your rage is ", str(round(Rage, 2))))
   else:
     print("The bullet missed!")
@@ -232,6 +253,8 @@ def bearing_shot():
     RageCD = 10
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  else:
+    pass
 
 def Heal():
   global ThugHP
@@ -303,6 +326,8 @@ def barrage_GE():
   elif Pain == 1.5:
     ThugHP -= 5.5
     print(term.red("-5.5"))
+  else:
+    pass
   time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
@@ -317,22 +342,21 @@ def barrage_GE():
 
 def Sand_Ant_Spray():
   global ThugHP
-  global DMG
+  global GEDMG
   global PainCD
-  if PainCD < 10:
-    Pain = 1
-  else:
-    Pain = 1.5
   print("You throw the sand")
-  time.sleep(1)
+  time.sleep(0.5)
   print("It turns into ants")
-  time.sleep(1)
+  time.sleep(0.5)
   print("The ants bite")
-  time.sleep(1)
-  GEDMG = round(random.uniform(11,22), 1)
-  GEDMG *= Pain
+  time.sleep(0.5)
+  GEDMG = round(random.uniform(15,25), 1)
+  if Pain == 1.5:
+    GEDMG *= Pain
+  else:
+    pass
   ThugHP -= GEDMG
-  print(term.red("-" + str(round(GEDMG, 2))))
+  print(term.red("-" + str(round(GEDMG, 1))))
   time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
@@ -348,8 +372,7 @@ def Sand_Ant_Spray():
 def Pain_Sens():
   if PainCheck() == True:
     global ThugHP
-    global GEDMG
-    global PainTime
+    global DMG
     global Pain
     global PainCD
     print("You punch the enemy")
@@ -360,8 +383,7 @@ def Pain_Sens():
     Pain = 1.5
     print("Damage has been increased")
     time.sleep(1)
-    if PainCD == 0:
-     PainCD = 10
+    PainCheck()
     if ThugHP <= 0:
       print("He has HP 0 left")
       print(term.webgreen("You had ", str(round(HP)), "HP left"))
@@ -449,6 +471,8 @@ def Shoot():
   if ThugHP > 0:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
+  else:
+    pass
 
 def Shotty():
   #The needles have Raibes
@@ -462,7 +486,7 @@ def Shotty():
   DMG2 *= Venom
   for one in range(Hits1):
     DMG = round(random.uniform(0.2,0.35), 2)
-    print(term.red("-" + str(round(DMG, 2))))
+    print(term.red("-" + str(round(DMG, 1))))
     ThugHP -= DMG
   Venom += 0.5
   time.sleep(0.5)
@@ -475,12 +499,15 @@ def Shotty():
   if ThugHP > 0:
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
+  else:
+    pass
 
 def Gas():
   global DMG
   global ThugHP
   DMG = random.uniform(3, 10)
-  print("among us")
+  ThugHP -= DMG
+  print(term.red("Gas DMG: " + str(DMG)))
 
 thugshot = ['HeadBonk', 'Hit']
 
@@ -509,13 +536,13 @@ def Thugshot():
       print("Y O U  D I E D")
       time.sleep(2)
       sys.exit()
-  if shot == 'Hit':
+  elif shot == 'Hit':
     for a in range(2):
       ThugDMG = round(random.uniform(7.5, 12))
       HP -= ThugDMG
       Rage += 0.07
       Rageis2()
-      print(term.red("-" + str(round(ThugDMG, 2))))
+      print(term.red("-" + str(round(ThugDMG, 1))))
       if ability == 'CD':
         print(term.orange("Your rage is ", str(round(Rage, 2))))
       time.sleep(1)
@@ -526,6 +553,8 @@ def Thugshot():
       print("Y O U  D I E D")
       time.sleep(2)
       sys.exit()
+  else:
+    pass
 
 power = ['CUSTOMHEAL'] 
 
