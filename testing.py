@@ -15,7 +15,6 @@ RageCD = 1
 PainCD = 1
 HP = 100
 ThugHP = 100
-Melt = 0
 PainSens = 1
 
 term = Terminal()
@@ -94,6 +93,7 @@ def ask(message, choices):
   global HP
   return inquirer.prompt([inquirer.List('',message,choices)])[""]
 
+#CD
 def punch_combo_CD():
   global HP
   global ThugHP
@@ -133,7 +133,7 @@ def punch_combo_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   time.sleep(1)
@@ -164,6 +164,8 @@ def barrage_CD():
     Rage += 0.04
     print(term.red("-7.5"))
     RageCD -= 1
+  else:
+    pass
   Rage += 0.3
   Rageis2()
   time.sleep(1)
@@ -179,7 +181,7 @@ def barrage_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
 
@@ -224,9 +226,11 @@ def bearing_shot():
     time.sleep(2)
   time.sleep(1)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
+  else:
+    pass
 
 def Heal():
   global ThugHP
@@ -240,6 +244,7 @@ def Heal():
     print(term.yellow("He has 0 HP left"))
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
 
+#GE
 def punch_combo_GE():
   global HP
   global ThugHP
@@ -297,6 +302,8 @@ def barrage_GE():
   elif Pain == 1.5:
     ThugHP -= 5.5
     print(term.red("-5.5"))
+  else:
+    pass
   time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
@@ -311,22 +318,21 @@ def barrage_GE():
 
 def Sand_Ant_Spray():
   global ThugHP
-  global DMG
+  global GEDMG
   global PainCD
-  if PainCD < 10:
-    Pain = 1
-  else:
-    Pain = 1.5
   print("You throw the sand")
-  time.sleep(1)
+  time.sleep(0.5)
   print("It turns into ants")
-  time.sleep(1)
+  time.sleep(0.5)
   print("The ants bite")
-  time.sleep(1)
-  GEDMG = round(random.uniform(11,22), 1)
-  GEDMG *= Pain
+  time.sleep(0.5)
+  GEDMG = round(random.uniform(15,25), 1)
+  if Pain == 1.5:
+    GEDMG *= Pain
+  else:
+    pass
   ThugHP -= GEDMG
-  print(term.red("-" + str(round(GEDMG, 2))))
+  print(term.red("-" + str(round(GEDMG, 1))))
   time.sleep(1)
   if PainCD > 0:
     PainCD -= 1
@@ -342,8 +348,6 @@ def Sand_Ant_Spray():
 def Pain_Sens():
   if PainCheck() == True:
     global ThugHP
-    global GEDMG
-    global PainTime
     global Pain
     global PainCD
     print("You punch the enemy")
@@ -354,8 +358,7 @@ def Pain_Sens():
     Pain = 1.5
     print("Damage has been increased")
     time.sleep(1)
-    if PainCD == 0:
-     PainCD = 10
+    PainCheck()
     if ThugHP <= 0:
       print("He has HP 0 left")
       print(term.webgreen("You had ", str(round(HP)), "HP left"))

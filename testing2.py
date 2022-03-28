@@ -10,7 +10,6 @@ CDHit2 = True
 CDHit3 = True
 CDBarrageDMG = True
 DMG = True
-GEDMG = True
 DMG2 = True
 HP = 100
 ThugHP = 100
@@ -18,7 +17,7 @@ Rage = 1
 Pain = 1
 Venom = 1
 RageCD = 2
-PainCD = 0
+PainCD = 1
 GasCD = 0
 
 term = Terminal()
@@ -94,7 +93,7 @@ def Venomis8():
 def GasCheck():
   global GasCD
   if GasCD == 0:
-    GasCD = 0
+    pass
   elif GasCD > 0:
     GasCD -= 1
   else:
@@ -103,11 +102,11 @@ def GasCheck():
 def PainCheck():
   global PainCD
   if PainCD == 0:
-    PainCD = 10
-  elif PainCD > 0:
+    return True
+    PainCD = 0
+  if PainCD > 0:
+    return False
     PainCD -= 1
-  else:
-    pass
 
 def ask(message, choices):
   global HP
@@ -153,7 +152,7 @@ def punch_combo_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   else:
@@ -203,7 +202,7 @@ def barrage_CD():
     print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   else:
@@ -250,7 +249,7 @@ def bearing_shot():
     time.sleep(2)
   time.sleep(1)
   if RageCD <= 0:
-    RageCD = 10
+    RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   else:
@@ -372,7 +371,6 @@ def Sand_Ant_Spray():
 def Pain_Sens():
   if PainCheck() == True:
     global ThugHP
-    global DMG
     global Pain
     global PainCD
     print("You punch the enemy")
@@ -556,7 +554,7 @@ def Thugshot():
   else:
     pass
 
-power = ['CUSTOMHEAL'] 
+power = ['CD', 'GE', 'CUSTOMHEAL'] 
 
 #'SPTW', 'CUSTOMPOWER', 'CUSTOMPOWER2', 'LIMBLOSS','ICEMELT', 'MIH', 'CUSTOMSPEED', 'CUSTOMSPEED2', 'GER'
 print("Not Finished, I just want to make a good game")
