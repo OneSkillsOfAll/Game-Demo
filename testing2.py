@@ -1,4 +1,7 @@
 #experimental
+# CHANGE:
+# time.sleep(2) to time.sleep(1) after DMG done
+
 import sys
 import time
 import random
@@ -73,7 +76,7 @@ def RageCheck():
   if Rage >= 2 and RageCD <= 0:
     Rage = 1
     RageCD = 5
-  else:
+  elif Rage >= 2 and RageCD <= 1:
     pass
 
 def Rageis2():
@@ -149,8 +152,7 @@ def punch_combo_CD():
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
+    time.sleep(1)
   if RageCD <= 0:
     RageCD = 5
   if ThugHP >= 0:
@@ -187,7 +189,7 @@ def barrage_CD():
     RageCD -= 1
   else:
     pass
-  Rage += 0.3
+  Rage += 0.35
   Rageis2()
   time.sleep(1)
   RageCheck()
@@ -199,14 +201,14 @@ def barrage_CD():
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
+    time.sleep(1)
   if RageCD <= 0:
     RageCD = 5
   if ThugHP >= 0:
     print("You need to do", str(RageCD) + " more move(s) with rage to reset your rage and its cooldown")
   else:
     pass
+  time.sleep(1)
 
 def bearing_shot():
   global ThugHP
@@ -236,7 +238,6 @@ def bearing_shot():
   print(term.red("-" + str(round(DMG2, 2))))
   Rage += 0.8
   Rageis2()
-  RageCheck()
   print(term.orange("Your rage is ", str(round(Rage, 2))))
   time.sleep(1)
   if ThugHP <= 0:
@@ -245,7 +246,6 @@ def bearing_shot():
     print(term.webgreen("You had ", str(round(HP)), "HP left"))
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   time.sleep(1)
   if RageCD <= 0:
@@ -261,7 +261,6 @@ def Heal():
   print("Dude, do you are have the stupid?\nYou just healed the thug back to 100 HP.")
   time.sleep(2.5)
   if ThugHP > 0:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   else:
     print(term.yellow("He has 0 HP left"))
@@ -302,7 +301,6 @@ def punch_combo_GE():
     PainCD = 0
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
 
 def barrage_GE():
@@ -336,7 +334,6 @@ def barrage_GE():
     PainCD = 1
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
 
 def Sand_Ant_Spray():
@@ -365,7 +362,6 @@ def Sand_Ant_Spray():
     PainCD = 1
     time.sleep(2)
   else:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
 
 def Pain_Sens():
@@ -388,11 +384,9 @@ def Pain_Sens():
       PainCD = 0 
       time.sleep(2)
     else:
-      print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
       time.sleep(2)
   else:
-    print("You have", str(PainCD) + """ moves left
-    """)
+    print("You have ", str(PainCD) + "moves left")
 
 #CUSTOMHEAL
 def Shoot():
@@ -466,11 +460,6 @@ def Shoot():
       print(term.yellow("He has 0 HP left"))
       print(term.webgreen("You had ", str(round(HP)), "HP left"))
   time.sleep(1)
-  if ThugHP > 0:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
-    time.sleep(2)
-  else:
-    pass
 
 def Shotty():
   #The needles have Raibes
@@ -495,7 +484,6 @@ def Shotty():
     ThugHP -= DMG2
   Venom += 0.5
   if ThugHP > 0:
-    print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
     time.sleep(2)
   else:
     pass
@@ -530,6 +518,8 @@ def Thugshot():
     if HP > 0:
       print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
       time.sleep(1)
+      print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
+      time.sleep(1)
     else:
       print("Y O U  D I E D")
       time.sleep(2)
@@ -546,6 +536,8 @@ def Thugshot():
       time.sleep(1)
     if HP > 0:
       print(term.webgreen("You have ", str(round(HP, 1)), "HP left"))
+      time.sleep(1)
+      print(term.yellow("He has ", str(round(ThugHP, 2)), "HP left"))
       time.sleep(1)
     else:
       print("Y O U  D I E D")
