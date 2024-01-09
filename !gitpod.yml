@@ -5,6 +5,7 @@
 
 tasks:
   - init: pip install inquirer climage
+  - command: python main.py
 vscode:
   extensions:
     - ms-python.python
