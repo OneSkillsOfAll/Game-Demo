@@ -561,4 +561,4 @@ elif ability == 'GE':
 elif ability == 'CUSTOMHEAL':
   def CUSTOMHEAL():
     global HP
-  print("WIP (and nae nae)")
+  print("WIP")
